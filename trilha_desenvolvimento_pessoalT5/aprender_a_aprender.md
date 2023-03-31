@@ -1,6 +1,32 @@
 # Técnicas para autodesenvolvimento
 
-- [Técnicas para autodesenvolvimento](#técnicas-para-autodesenvolvimento) - [Pontos Essenciais](#pontos-essenciais) - [Planejando: passo a passo](#planejando-passo-a-passo)
+- [Técnicas para autodesenvolvimento](#técnicas-para-autodesenvolvimento)
+  - [Aula 1: Aprendizagem como estilo de vida](#aula-1-aprendizagem-como-estilo-de-vida)
+    - [Lifelong learning](#lifelong-learning)
+    - [Razões para aprender](#razões-para-aprender)
+    - [Profundidade x Abrangência](#profundidade-x-abrangência)
+    - [Ikigai](#ikigai)
+    - [Estilos de aprendizagem](#estilos-de-aprendizagem)
+  - [Talento ou disciplina?](#talento-ou-disciplina)
+    - [Zona de aprendizagem](#zona-de-aprendizagem)
+    - [Disciplina](#disciplina)
+    - [Elimine barreiras](#elimine-barreiras)
+    - [Hábitos para serem criados](#hábitos-para-serem-criados)
+  - [Desvendando o cérebro](#desvendando-o-cérebro)
+    - [Mindset](#mindset)
+    - [Modos: Focado x Difuso](#modos-focado-x-difuso)
+    - [Formatos de aprendizagem](#formatos-de-aprendizagem)
+    - [Prática distribuída x cramming](#prática-distribuída-x-cramming)
+    - [Memória de longo prazo](#memória-de-longo-prazo)
+  - [O poder das metas](#o-poder-das-metas)
+    - [Definindo a meta](#definindo-a-meta)
+    - [Método SMART](#método-smart)
+  - [Rotina de aprendizagem](#rotina-de-aprendizagem)
+    - [Gestão de tempo e espaço](#gestão-de-tempo-e-espaço)
+    - [Ferramentas](#ferramentas)
+      - [Pontos Essenciais](#pontos-essenciais)
+      - [Planejando: passo a passo](#planejando-passo-a-passo)
+
 
 ## Aula 1: Aprendizagem como estilo de vida
 
