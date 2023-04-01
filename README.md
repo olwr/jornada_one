@@ -8,7 +8,7 @@
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-yellow "progresso")
 
 - [x] Aprender a aprender
-- [ ] Turbine seu LinkedIn
+- [x] Turbine seu LinkedIn
 - [ ] Foco no dia a dia
 - [ ] Comece peles seus hábitos
 - [ ] Diagnóstico de aprendizado
