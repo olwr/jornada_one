@@ -19,6 +19,13 @@
     - [Exemplos de recompensa](#exemplos-de-recompensa)
   - [Autodisciplina](#autodisciplina)
     - [Como desenvolver a autodisciplina](#como-desenvolver-a-autodisciplina)
+    - [Organização](#organização)
+    - [Cada coisa no seu lugar](#cada-coisa-no-seu-lugar)
+    - [Autoconfiança](#autoconfiança)
+  - [Produtividade](#produtividade)
+    - [Ganhe produtividade com a Técnica Pomodoro](#ganhe-produtividade-com-a-técnica-pomodoro)
+    - [Gerencie interrupções com a Técnica Pomodoro](#gerencie-interrupções-com-a-técnica-pomodoro)
+    - [GTD: Getting Things Done](#gtd-getting-things-done)
 
 ## Reconhecendo seus hábitos
 
@@ -195,3 +202,138 @@ Alternar entre recompensas pode manter a novidade das ações.
 ## Autodisciplina
 
 ### Como desenvolver a autodisciplina
+
+Disciplina → **Foco + Motivação**
+
+"Disciplina é a capacidade de se manter focado nas tarefas necessárias para concretização de uma meta sem se desviar e sem perder a motivação."
+
+É necessário autoconhecimento, fazer uma análise sobre seus objetivos, motivações, foco, necessidades e quais estratégias funcionam para você.
+
+- Por quê?
+- Para quê?
+- Como?
+- Onde?
+- Qual forma é a mais eficiente?
+- O que é mais benéfico/prazeroso?
+- O que funciona melhor?
+- Ainda é condizente com o que almejo?
+- Faz sentido no meu contexto?
+- O que planejo fazer?
+
+Sempre questionando e procurando entender o que faz sentido para você, lembrando que as respostas não só variam de pessoa para pessoa, como também de tempos em tempos e situação.
+
+### Organização
+
+Esquecimento pode ser causado por:
+
+- Distrações.
+- Stress.
+- Ansiedade.
+- Imprevistos.
+
+Uma forma de evitar esquecimentos é de anotar, planejar e organizar de ante mão.
+
+- Criar listas.
+- Separar um momento de pré-organização antes da atividade.
+- Organizar o ambiente.
+- Planejar as tarefas.
+- Anotar as informações necessárias.
+
+O uso de aplicativos - como Notion, Evernote, Trello - pode auxiliar na organização do dia a dia.
+
+### Cada coisa no seu lugar
+
+Um ambiente bem arrumado e organizado é essencial.
+
+Cada coisa no seu lugar permite que se encontre com mais facilidade, não esqueça com tanta frequência, nem acabe comprando algo desnecessariamente por não achar o que já se tem, assim poupando tempo, dinheiro e espaço.
+
+Ter mais coisas causa mais desordem, pede por uma maior organização.
+
+### Autoconfiança
+
+![](imgs/18.png)
+
+Sentir segurança na sua área, nos bons hábitos e comportamentos. 
+
+Procurar manter uma boa comunicação e relações proveitosas.
+
+Focar em uma tarefa de cade vez, sem se esquecer das pausas para descansar e repor energias.
+
+O importante é praticar o equilíbrio entre vida pessoal e profissional, entre personalidade e necessidades.
+
+---
+
+## Produtividade
+
+### Ganhe produtividade com a Técnica Pomodoro
+
+A Técnica Pomodoro consiste em intercalar o trabalho entre blocos de foco e pausas.
+
+A técnica sugere períodos de foco de 25 minutos, separados por pausas breves de até 5 minutos. Após 4 ciclos se ganha uma pausa longa de 20 a 30 minutos.
+
+Então se recomeça o ciclo.
+
+Essa técnica pode:
+
+- Aumentar a concentração.
+- Aumentar a produtividade.
+- Diminuir as interrupções.
+- Aprender a estimar melhor o tempo para cada tarefa.
+- Aliviar a ansiedade.
+
+![](imgs/ciclo-tomate.png)
+
+O tempo pode ser ajustado para a necessidade de cada um. É só preciso lembrar que o foco está entre o intercalo de foco e pausa.
+
+Pode-se aumentar os tempos de concentração e pausa, trabalhar em uma tarefa até sentir o foco diminuir e então se dar um tempo de pausa, etc.
+
+O importante é achar o modo que funciona melhor para si.
+
+### Gerencie interrupções com a Técnica Pomodoro
+
+Lembrar de uma tarefa que precisa fazer quando esta focando em outra é uma situação de interrupção interna.
+
+A troca de tarefas não é ideal, irá cortar o foco e atrapalhar a técnica, porém se não fizer no momento, pode levar ao esquecimento da tarefa.
+
+Para isso há uma solução simples: Anotar e delegar para um próximo momento.
+
+(A não ser que seja algo urgente)
+
+Quando são situações do ambiente - colegas, notificações, ligações, etc - são consideradas interrupções externas.
+
+O que se pode fazer:
+
+- Organizar o espaço.
+- Limitar ou eliminar distrações.
+- Comunicar seus objetivos e necessidades.
+- Melhorar estimativas.
+
+Não esquecer a flexibilidade, lidar com cada situação no contexto necessário.
+
+### GTD: Getting Things Done
+
+"A arte de fazer acontecer"
+
+![](imgs/gtd-o-que-significa-gtd.webp)
+
+Passo 1: Coletar
+
+- Anotar tudo.
+- Criar listas.
+
+Passo 2: Processar
+
+- Analisar as tarefas.
+- Priorizar no contexto.
+
+Passo 3: Organizar
+
+- Alocar tempo e dia para cada tarefa.
+
+Passo 4: Revisão
+
+- Manter a lista atualizada.
+
+Passo 5: Execução
+
+- Fazer as tarefas.
