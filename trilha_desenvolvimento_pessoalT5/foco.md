@@ -9,6 +9,16 @@
     - [Sucesso e disciplina](#sucesso-e-disciplina)
     - [O que está por trás do momento Eureka?](#o-que-está-por-trás-do-momento-eureka)
     - [Reflexão e ação com foco](#reflexão-e-ação-com-foco)
+  - [Força de vontade](#força-de-vontade)
+    - [O poder da força de vontade](#o-poder-da-força-de-vontade)
+    - [Como manter a força de vontade](#como-manter-a-força-de-vontade)
+    - [Os desafios para manter o foco](#os-desafios-para-manter-o-foco)
+  - [Equilíbrio na vida](#equilíbrio-na-vida)
+    - [Como buscar o bem estar](#como-buscar-o-bem-estar)
+    - [Dicas de lidar com o desânimo](#dicas-de-lidar-com-o-desânimo)
+  - [A única coisa](#a-única-coisa)
+    - [o hábito do sucesso](#o-hábito-do-sucesso)
+    - [Como estimular o foco](#como-estimular-o-foco)
 
 ## A ilusão de ser multitarefa
 
@@ -58,6 +68,8 @@ Internalizamos e criamos tantos mitos ao longo da vida, muito atrapalham nosso d
 
 Sucesso não é algo sistemático, não tem a mesma cara para diferentes pessoas. O seu significado de sucesso pode não ser o mesmo de um colega. É importante medir e adaptar suas expectativas e ações de acordo com quem você é e o que almeja, o que te satisfará.
 
+![](imgs/O+caminho+para+o+sucesso+n%C3%A3o+%C3%A9+uma+estrada+em+linha+reta.jpg)
+
 Mas como funciona na prática?
 
 Deve se trabalhar com a disciplina que já tem, aprender a guia-la por seus objetivos e desenvolver hábitos que sejam coerentes e benéficos para si. Estruturar uma lista com cada tarefa separada por prioridade.
@@ -104,3 +116,149 @@ Mas, também existe a necessidade de se relaxar a mente e o corpo, de desestress
 Não deva nada: quando se comprometer com outra pessoa, o melhor é cumprir o mais rápido possível para que não seja algo que se arraste e atrapalhe outras coisas.
 
 Refletir sobre o dia e tomar decisões de acordo, adaptando, mas se mantendo responsável é a chave para uma rotina mais produtiva.
+
+---
+
+## Força de vontade
+
+### O poder da força de vontade
+
+Vilões do foco:
+
+- Estresse
+- Expectativas altas
+- Excesso de autoconfiança
+- Pensamento negativo
+- Esperar pela inspiração ideal
+- Falta de sono
+- ...
+
+É necessário analisar a situação (que é diferente para cada um) e agir na raiz do problema.
+
+A força de vontade auxilia na construção dessas soluções. Não adianta planejar e criar expectativas para não agir depois.
+
+Mas deve-se lembrar que não se pode se apoiar na motivação o tempo todo, pois ela é algo que varia muito.
+
+Se algo não está dando certo, não há problema em procurar alternativas, tentar algo novo. Mas é preciso lembrar que trocas constantes também são prejudiciais, deve-se ter paciência antes de se alterar para uma nova opção.
+
+A força de vontade geralmente se associa a algo que queremos muito ou gostamos de fazer. Podemos nos concentrar no objetivo e recompensar cada meta atingida para manter o interesse ou achar prazer nas ações da jornada.
+
+- Implementar novos comportamentos
+- Resistir às tentações
+- Não suprir emoções
+- Suprimir impulsos
+- Lidar com o medo
+- Identificar qual é o horário do dia em que se tem mais energia e alocar as atividades mais importantes nele
+
+### Como manter a força de vontade
+
+A prática leva à perfeição.
+
+Começar com desafios menores, ir aumentando a dificuldade progressivamente.
+
+Devemos nos focar mais nas metas quando estivermos mais dispostos, com tempos de descansos. 
+
+Haverão dias ruins e obstáculos, ações que irão comprometer a força de vontade. Porém, eles terão que ser exceções, não a regra.
+
+É preciso evitar a retomada de hábitos ruim, cair na tentação uma vez é normal, mas se deve tomar cuidado para manter o equilíbrio.
+
+Uma boa alimentação e sono regular mantêm um cérebro saudável e muito mais disposto. O autocuidado é essencial para o foco e a motivação.
+
+O estresse é o grande inimigo da força de vontade. Não podemos esquecer de descansar e relaxar, de não nos sobrecarregar.
+
+### Os desafios para manter o foco
+
+Ação:
+
+- Foco no agora.
+- Fazer as atividades no momento.
+
+Recompensas:
+
+- Recompensar os resultados positivos.
+
+Ter consciência sobre:
+
+- Limites.
+- Necessidades.
+- Atitudes.
+
+Usar gatilhos para impulsionar a motivação.
+
+---
+
+## Equilíbrio na vida
+
+### Como buscar o bem estar
+
+Porque se desconectar do trabalho é tão difícil?
+
+O sentimento de culpa e exigir muito de si pode encadear ações que levem ao sobrecarregamento pessoal. Não se dever tornar o trabalho toda a sua vida.
+
+Para manter a saúde, e até mesmo ser mais eficiente e produtivo, é necessário um equilíbrio entre responsabilidades e descanso.
+
+Ação:
+
+- Estabelecer períodos para cada responsabilidade.
+- Estabelecer metas para a evolução pessoal e profissional.
+- Avaliar a performance das suas ações.
+- Definir um tempo para o descanso.
+- Preencher o tempo com atos significativos.
+- Cuidar da saúde.
+- Aproveitar a sua própria companhia.
+- Reservar um tempo para as suas relações.
+- Estimular sua capacidade de aprendizado.
+- Divertir-se.
+
+### Dicas de lidar com o desânimo
+
+Foco:
+
+- O quer fazer no futuro próximo?
+- Quais os recursos necessários?
+- Por que quer?
+
+
+Ação:
+
+- Desconectar
+- Treinar o cérebro
+- Acalmar a mente
+- Isolar as preocupações
+
+---
+
+## A única coisa
+
+### o hábito do sucesso
+
+Hábitos poderosos = Pergunta foco.
+
+"Qual é a coisa mais importante que posso fazer de modo que, ao fazê-la, o restante se torna mais fácil ou desnecessário?"
+
+Áreas principais que constituem nossa vida:
+
+- Saúde física e emocional
+- Vida Pessoal
+- Relacionamentos
+- Trabalho/Negócios
+- Vida financeira
+- Vida espiritual
+
+Devemos moldar a pergunta foco para cada área de modo que se torne pertinente e se encaixe no contexto, como exemplo: "qual a principal ação a ser feita para melhorar minha comunicação?"
+
+### Como estimular o foco
+
+"O foco é o ingrediente chave para estimular a prosperidade e o sucesso".
+
+Dicas do livro "O Poder do Foco":
+
+- A cada semana/mês tirar um dia para você.
+- Antes de dormir,fazer um rascunho do que quer realizar no dia seguinte.
+- Encontrar uma maneira de tornar o seu dia melhor.
+- Tirar uma soneca.
+- Pedir mais.
+- Ser consciente e persistente.
+- Cumprir promessas.
+- Comprometer em fazer o seu melhor.
+- Assumir resultados.
