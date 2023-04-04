@@ -9,6 +9,6 @@
 
 - [x] Aprender a aprender
 - [x] Turbine seu LinkedIn
-- [ ] Foco no dia a dia
+- [x] Foco no dia a dia
 - [ ] Comece peles seus hábitos
 - [ ] Diagnóstico de aprendizado
