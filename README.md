@@ -10,7 +10,7 @@
 - [x] Aprender a aprender
 - [x] Turbine seu LinkedIn
 - [x] Foco no dia a dia
-- [x] Comece peles seus hábitos
+- [x] Comece pelos seus hábitos
 - [x] Diagnóstico de aprendizado
 
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Trilha Iniciante de Programação
