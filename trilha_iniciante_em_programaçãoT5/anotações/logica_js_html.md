@@ -64,6 +64,8 @@ A regra é clara:
   - isso_e_curto.html (bom)
   - isso_nao_para_de_crescer_vc_nem_consegue_ler_direito.html (péssimo)
 
+[Artigo Alura: convenções de nomenclatura em linguagens](https://www.alura.com.br/artigos/convencoes-nomenclatura-camel-pascal-kebab-snake-case)
+
 ## Começando com o HTML
 
 Linguagem de marcação que funciona como a estrutura, o esqueleto, para construção mais básica de uma página web. É marcada pelo uso de **TAGs** que são instruções especiais a serem interpretadas pelo navegador.
@@ -414,6 +416,48 @@ botao.onclick = enviarArquivo; // guarda função, +() executa automaticamente
 <button onclick="enviarArquivo" id="botaoEnviar">
   Enviar
 </button>;
+```
+
+Uma função pode ser chamada dentro de outra, ela também pode receber parâmetros. Se houver parâmetros, é necessário definir sua funcionalidade dentro da função e definir o seu valor toda vez que a função for chamada.
+
+```js
+function pulaLinha() {
+  document.write("<br><br>");
+}
+
+function escreveMensagem(mensagem) {
+  document.write(mensagem);
+  pulaLinha();
+}
+
+function escreveTitulo(titulo) {
+  document.write("<h3>" + titulo + "</h3>");
+}
+
+escreveTitulo("<h3>Porcentagem de acertos na prova</h3>");
+
+var prova = {
+  questoes: 50,
+  acertos: 15,
+  peso: 100,
+};
+
+var calculo = (prova.acertos / prova.questoes) * prova.peso;
+
+escreveMensagem("Eu acertei: " + calculo + "% da prova");
+```
+
+Funções também atribuir valores a variáveis ao retornar dados, para isso, é necessário o uso da keyword `return` dentro da função seguido do que se deseja retornar. O JavaScript processa/executa a função, pega o valor e o retorna para a variável que, quando o recebe, guarda na memória.
+
+```js
+function calculaIMC(peso, altura) {
+    var imc = peso / (altura * altura);
+    console.log('O IMC é: ' + Math.round(imc));
+    return imc
+}
+
+var meuIMC = calculaIMC(77.2, 1.65)
+var seuIMC = calculaIMC(90, 1.71)
 ```
 
 #### Tipos de funções
