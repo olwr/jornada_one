@@ -12,6 +12,10 @@
     - [Variáveis](#variáveis)
     - [Operadores principais](#operadores-principais)
     - [Tipos de dados](#tipos-de-dados)
+    - [Arrays](#arrays)
+      - [Declarando e acessando](#declarando-e-acessando)
+      - [Métodos](#métodos)
+    - [Objetos](#objetos)
   - [DOM](#dom)
       - [Métodos para selecionar elementos](#métodos-para-selecionar-elementos)
       - [Métodos e propriedades para alterar elementos](#métodos-e-propriedades-para-alterar-elementos)
@@ -24,6 +28,7 @@
     - [Strings](#strings)
     - [Números](#números)
     - [Concatenações](#concatenações)
+  - [Condicionais](#condicionais)
 
 ## Primeiros passos
 
@@ -312,6 +317,141 @@ x = 5; // agora x é um Number
 x = "Jonas"; // agora x é uma String
 ```
 
+### Arrays
+
+Variável que guarda mais de um valor. É uma estrutura de dados que serve para guardar e organizar elementos em um mesmo espaço de memória. Esses elementos podem ser acessados por um tipo de indicação, que chamamos de índice - [0][1][2]...
+
+No JavaScript, os arrays se comportam como uma lista de itens, sendo que esta lista começa a contar a partir do índice zero.
+
+```js
+var cores = ['Azul', 'Vermelho', 'Preto', 'Roxo', 'Branco', 'Cinza']
+```
+
+Cada item é um elemento, cada elemento possui e é acessado por um índice, cada índice pode ter um item que possui mais de um elemento, ou seja, um array pode ter outro array como item.
+
+Um array pode ter seus itens acessados, modificados, deletados e novos acrescentados à vontade.
+
+#### Declarando e acessando
+
+Cada item da lista é separado por vírgula e ocupa uma posição do array iniciando no índice zero. Essa forma é chamada de **método literal de array**.
+
+Podemos acessar um elemento de um array usando o nome da variável seguido de colchetes e seu índice → `nomeVar[0]`
+
+```js
+var listaDeFrutas = ['Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango'];
+
+var primeiroItem = listaDeFrutas[0]; // Maçã
+var terceiroItem = listaDeFrutas[2]; // Banana
+var quintoItem = listaDeFrutas[4] // Morango
+```
+
+Outra forma de acessar os elementos de um array é iterando dentro dele, ou seja, percorrendo todos os seus itens através de laços de repetição como: `while`, `for` e `forEach`
+
+#### Métodos
+
+`indexOf()` → retorna o índice da primeira ocorrência do valor especificado. Recebe o item como parâmetro.
+
+- Retorna sempre um número
+- Retorna -1 se o valor não for encontrado
+- Começa pelo índice especificado e procura da esquerda para a direita
+- Por padrão, a procura começa no primeiro elemento e e termina no último
+
+```js
+array.indexOf(item, start) // sintaxe, item - obrigatório, start - opcional
+
+var listaDeFrutas = ['Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango'];
+var procura = indexOf('Abacaxi', 4); // -1
+var procura = indexOf('Abacaxi'); // 3
+```
+
+`push()` → adiciona um item ao final do array. Recebe o(s) novo(s) item(s) como parâmetro.
+
+- Adiciona n itens para o final do array
+- Modifica o tamanho do array
+- Retorna um número, o novo tamanho do array
+
+```js
+array.push(item1, item2... itemN) // sintaxe
+
+listaDeFrutas.push('Goiaba', 'Carambola'); // ['Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba', 'Carambola']
+```
+
+`unshift` → adiciona um item ao início do array. Recebe o(s) novo(s) item(s) como parâmetro.
+
+- Adiciona n items ao início do array
+- Modifica o tamanho do array
+- Retorna um número, o novo tamanho do array
+
+```js
+array.unshift(item1, item2... itemN) // sintaxe
+
+listaDeFrutas('Tomate', 'Laranja'); // ['Tomate', 'Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba', 'Carambola']
+```
+
+`pop` → remove o último item do array. 
+
+- Modifica o array original
+- Retorna o elemento removido
+
+```js
+array.pop() // sintaxe
+
+listaDeFrutas.pop() // 'Carambola'
+// ['Tomate', 'Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba']
+```
+
+`shift` → remove o primeiro item do array.
+
+- Modifica o array original
+- Retorna o elemento removido
+
+```js
+array.pop() // sintaxe
+
+listaDeFrutas.pop() // 'Tomate'
+// ['Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba']
+```
+
+
+`splice` → remove items de uma posição a outra e retorna um novo array com os itens removidos. Recebe como parâmetros opcionais a posição inicial e final.
+
+- Retorna os itens especificados como um novo array
+- Seleciona de um começo especificado até (não incluso) um final especificado
+- Não modifica o array original
+
+```js
+array.slice(start, end)
+
+listeDeFrutas.slice(1, 4) // ['Maçã', 'Uva', 'Banana']
+```
+
+### Objetos
+
+Podem ser definidos como uma coleção de dados. Para criar objetos no JavaScript é preciso utilizar as chaves {}, dentro delas são inseridos pares de propriedade e valor separados por vírgula. 
+
+Assim como em um livro físico, os pares se dão seguindo o exemplo `propriedade: valor` → `titulo: Senhor dos Anéis`.
+
+A maioria dos livros tem as mesmas propriedades, mas os valores das propriedades diferem de um livro para o outro. É possível inserir dados dos tipos: `string` , `number`, `array`, `object` e até mesmo declarar funções.
+
+```js
+var livro = {
+  titulo: 'Crush',
+  autor: 'Richard Siken',
+  genero: 'Poesia',
+  editora: 'Unknown',
+  preco: 31.50
+}
+```
+
+É possível acessar a propriedade de um objeto usando **dot notation** ou **array notation**. Ambos inicializam com o nome do objeto para o acesso, seguido de: **ponto** para a notação de ponto e **colchetes** para a notação de array, seguido do item que se quer acessar - pode ser o nome da propriedade, item de um array, ou uma chamada para um método do objeto.
+
+```js
+livro.autor // 'Richard Siken'
+livro['autor'] // 'Richard Siken'
+```
+
+**Dot notation** é preferível sobre **array notation** por ser mais sucinto e fácil de ler, porém, há casos onde é necessário usar os colchetes. Por exemplo, se o nome de uma propriedade de um objeto esta em uma variável, não se pode usar o **dot notation** para acessa-lo, mas se pode acessar com o **array notation**.
+
 ---
 
 ## DOM
@@ -451,13 +591,13 @@ Funções também atribuir valores a variáveis ao retornar dados, para isso, é
 
 ```js
 function calculaIMC(peso, altura) {
-    var imc = peso / (altura * altura);
-    console.log('O IMC é: ' + Math.round(imc));
-    return imc
+  var imc = peso / (altura * altura);
+  console.log("O IMC é: " + Math.round(imc));
+  return imc;
 }
 
-var meuIMC = calculaIMC(77.2, 1.65)
-var seuIMC = calculaIMC(90, 1.71)
+var meuIMC = calculaIMC(77.2, 1.65);
+var seuIMC = calculaIMC(90, 1.71);
 ```
 
 #### Tipos de funções
@@ -633,3 +773,7 @@ var numString = "21";
 var numInt = 11;
 console.log(numString + numInt); // imprime 2111, conversão implícita do number para string
 ```
+
+---
+
+## Condicionais
