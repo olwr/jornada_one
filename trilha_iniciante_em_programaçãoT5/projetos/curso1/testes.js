@@ -126,7 +126,19 @@ escreveTitulo('IMC')
 
 function calculaIMC(peso, altura) {
     var imc = peso / (altura * altura);
-    escreveMensagem('O IMC de ' + nome + ' é ' + Math.round(imc));
+    escreveMensagem('O IMC de ' + nome + ' é ' + imc.toFixed(2));
+    
+    var limiteBaixo = 18.5;
+    var limiteAlto = 35;
+
+    if (imc < limiteBaixo) {
+        escreveMensagem('Você está abaixo do recomendado por: ' + (limiteBaixo - imc).toFixed(2));
+    } else if (imc > limiteAlto) {
+        escreveMensagem('Você está acima do recomendado por: ' + (imc - limiteAlto).toFixed(2));
+    } else {
+        escreveMensagem('Você está na faixa recomendada com ' + (imc - limiteBaixo).toFixed(2) + ' acima do limite aceitável do menor IMC e com ' + (limiteAlto - imc).toFixed(2) + ' abaixo do limite aceitável do maior IMC');
+    }
+    
     return imc
 }
 
@@ -148,3 +160,160 @@ function calculoCV() {
 }
 
 calculoCV()
+
+//PONTUAÇÃO DO TIME
+escreveTitulo("Como anda o seu time?");
+
+var pontuacaoPassado = parseInt(prompt("Entre com a pontuação do ano passado."));
+var vitorias = parseInt(prompt("Entre com o número de vitórias."));
+var empates = parseInt(prompt("Entre com o número de empates."));
+var pontos = (vitorias * 3) + empates;
+
+escreveMensagem("Os pontos do seu time são " + pontos);
+
+if(pontos > pontuacaoPassado) {
+    escreveMensagem("Seu time está melhor do que no ano passado por " + (pontos - pontuacaoPassado) + " pontos.");
+} else if(pontos < pontuacaoPassado) {
+    escreveMensagem("Seu time está pior do que no ano passado por " + (pontuacaoPassado - pontos) + " pontos.");
+} else {
+    escreveMensagem("Seu time está igual ao ano passado com " + pontos);
+}
+
+escreveMensagem("FIM");
+
+// QUÍMICA + PROGRAMAÇÃO
+escreveTitulo('São substâncias diferentes?')
+
+var quantidadeCarbono1 = parseInt(prompt("Quantidade de carbono substância 1:"));
+var quantidadeCarbono2 = parseInt(prompt("Quantidade de carbono substância 2:"));
+
+quantidadeCarbono2 += 2;
+
+if(quantidadeCarbono1 == quantidadeCarbono2 ) {
+    escreveMensagem("Acho que são substâncias parecidas");
+} else {
+    escreveMensagem("São substâncias bem diferentes");
+}
+
+// TEM CARTEIRA?
+escreveTitulo('Pode dirigir?')
+
+var suaIdade = parseInt(prompt('Qual é sua idade?'));
+var carteira = prompt('Tem carteira? Responda com S ou N');
+const podeDirigir = suaIdade >= 18 && carteira == 'S' ? 'Pode dirigir' : 'Não pode dirigir';
+escreveMensagem(podeDirigir)
+
+// ANO COPA
+escreveTitulo('Ano de Copa');
+
+var limite = parseInt(prompt('Entre com a data limite:'));
+var anoCopa = 1930;
+
+while(anoCopa <= limite) {
+    escreveMensagem('Teve copa em ' + anoCopa);
+    anoCopa += 4;
+}
+
+escreveMensagem('FIM')
+
+// PARES 0 - 100, CONTADOR 30 - 40 (SEM 33/37),TODOS DE 20 - 0
+escreveTitulo('Roberta não se cansa');
+
+escreveMensagem('*** Pares de 0 - 100');
+for (let i = 0; i <= 100;) {
+    escreveMensagem(i);
+    i += 2;
+}
+escreveMensagem('fim');
+
+escreveMensagem('Contador 30 - 40, sem 33 e 37');
+for (let i = 30; i <= 40; i++) {
+    if (i == 33 || i == 37 ) {
+        continue
+    }
+    escreveMensagem(i);
+}
+escreveMensagem('fim')
+
+escreveMensagem('Todos de 20 - 0');
+for (let i = 20; i >= 0; i--) {
+    escreveMensagem(i);
+}
+escreveMensagem('fim')
+
+// IDADE NaN
+escreveTitulo('Idade é NaN?')
+var idade = parseInt(prompt("Digite sua idade"));
+
+while( isNaN(idade) ) {
+    idade = parseInt(prompt("Digite sua idade"));    
+}
+alert(idade);
+
+// LOGIN
+escreveTitulo('Login');
+
+var loginCadastrado = 'alura';
+var senhaCadastrada = 'alura123';
+
+var loginInformado = prompt('Informe seu login:');
+var senhaInformada = prompt('Informe sua senha:');
+
+for (let i = 3;  i > 0; i--) {
+    if (loginCadastrado == loginInformado && senhaCadastrada == senhaInformada) {
+        escreveMensagem('Bem-vindo ao sistema ' + loginInformado);
+        break
+    } else if (loginCadastrado != loginInformado) {
+        alert('Usuário inválido. Tente novamente');
+        alert('Você tem mais ' + i + ' tentativas');
+        loginInformado = prompt('Informe seu login:');
+        senhaInformada = prompt('Informe sua senha:');
+        continue
+    } else {
+        alert('Senha inválida. Tente novamente');
+        alert('Você tem mais ' + i + ' tentativas');
+        loginInformado = prompt('Informe seu login:');
+        senhaInformada = prompt('Informe sua senha:');
+        continue
+    }
+}
+
+//MÉDIA DE IDADES FAMILIARES
+escreveTitulo('Média de idades: Familiares');
+
+var totalParentes = parseInt(prompt('Quantas familiares você tem?'));
+var totalIdades = 0;
+
+for (let i = 0; i < totalParentes; i++) {
+    var idades = parseInt(prompt('Informe a idade do seu familiar:'));
+    totalIdades += idades;
+};
+
+var mediaIdadesParentes = totalIdades/totalParentes;
+escreveMensagem('A média de idades dos familiares é: ' + mediaIdadesParentes.toFixed(1));
+
+// MÉDIA GASTOS EVENTOS
+escreveTitulo('A média de gastos com eventos')
+
+var totalDeEventos = parseInt(prompt("Informe o total de eventos"));
+var contador = 1;
+var totalGastoComEventos = 0;
+
+while(contador <= totalDeEventos) {
+    var gasto = parseFloat(prompt("Informe total gasto com evento"));
+    totalGastoComEventos += gasto;
+    contador++;
+}
+
+var media = (totalGastoComEventos / totalDeEventos).toFixed(2);
+escreveMensagem("A média de gastos é R$" + media);
+
+// ESTRELAS
+escreveTitulo('Escreve asteriscos');
+
+for(let linha = 1; linha <= 3; linha++) {
+    for(let coluna = 1; coluna <= 10; coluna++) {
+        document.write("*");
+    }
+    pulaLinha();
+}

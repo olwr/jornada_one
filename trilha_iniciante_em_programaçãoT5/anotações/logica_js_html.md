@@ -6,6 +6,13 @@
   - [Começando com o HTML](#começando-com-o-html)
     - [Sintaxe básica](#sintaxe-básica)
       - [Estrutura do documento](#estrutura-do-documento)
+    - [Interações com o usuário](#interações-com-o-usuário)
+      - [Input](#input)
+        - [Atributo type](#atributo-type)
+        - [Outros atributos](#outros-atributos)
+    - [Button](#button)
+        - [Atributos](#atributos)
+    - [Data-attributes](#data-attributes)
   - [Começando com o JavaScript](#começando-com-o-javascript)
       - [Console do navegador](#console-do-navegador)
     - [Sintaxe básica](#sintaxe-básica-1)
@@ -16,6 +23,9 @@
       - [Declarando e acessando](#declarando-e-acessando)
       - [Métodos](#métodos)
     - [Objetos](#objetos)
+      - [Acessando e editando](#acessando-e-editando)
+      - [This](#this)
+      - [Não declare strings, numbers e booleans como objects](#não-declare-strings-numbers-e-booleans-como-objects)
   - [DOM](#dom)
       - [Métodos para selecionar elementos](#métodos-para-selecionar-elementos)
       - [Métodos e propriedades para alterar elementos](#métodos-e-propriedades-para-alterar-elementos)
@@ -29,6 +39,14 @@
     - [Números](#números)
     - [Concatenações](#concatenações)
   - [Condicionais](#condicionais)
+  - [Loops](#loops)
+    - [For](#for)
+      - [Escopo do loop](#escopo-do-loop)
+    - [For in](#for-in)
+    - [For of](#for-of)
+    - [While](#while)
+    - [Do while](#do-while)
+    - [Break e continue](#break-e-continue)
 
 ## Primeiros passos
 
@@ -127,6 +145,198 @@ Por ser uma linguagem estática as modificações na página devem ser feitas di
   <script src=""></script>
   <!-- linka o arquivo para funcionalidades da página ou delimita o código dentro do html -->
 </html>
+```
+
+### Interações com o usuário
+
+Para interagir diretamente com o usuário o HTML oferece 2 tags: o `input`, onde o usuário pode inserir dados, e o `button`, que serve como gatilho para enviar estes dados à algum lugar.
+
+```html
+<fieldset>
+  <legend>O seu gato é um gato de dentro de casa ou de rua?</legend>
+  <label for="casa">
+    <input id="casa" value="casa" type="radio" name="casa-rua" />Casa
+  </label>
+  <label for="rua">
+    <input id="rua" value="rua" type="radio" name="casa-rua" />Rua
+  </label>
+  <button type="submit">Enviar</button>
+</fieldset>
+```
+
+#### Input
+
+Especifica uma área onde o usuário pode inserir dados, seu formato e os dados que pode receber variam de acordo com o valor do atributo que recebe de `type=`. A tag `<input />` é self-closing.
+
+`placeholder` é um atributo que mostra um texto na área do input antes que o usuário insira qualquer dado, geralmente usada para sinalizar o tipo/formato de dado desejado.
+
+O atributo `required` especifica que um input deve ser preenchido para que então seja possível enviá-lo.
+
+```html
+<input type="email" name="user-email" placeholder="insira seu email" required />
+```
+
+##### Atributo type
+
+| Valor            | Descrição                                                                                                                                                              |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `text` (padrão)  | Campo de texto com uma só linha; quebras de linha são automaticamente removidas                                                                                        |
+| `button`         | Botão clicável sem comportamento padrão                                                                                                                                |
+| `checkbox`       | Caixa de marcação; deve ser acompanhado do atributo `value` para definir o valor do item                                                                               |
+| `color`          | Color picker                                                                                                                                                           |
+| `date`           | Controle para inserir uma data (ano, mês e dia, sem horário)                                                                                                           |
+| `datetime`       | Controle para inserir uma data e horário (hora, minuto, segundo e fração de segundo) baseado no fuso horário UTC                                                       |
+| `datetime-local` | Controle para inserir uma data e horário (hora, minuto, segundo e fração de segundo) sem fuso horário                                                                  |
+| `email`          | Campo para inserir um endereço de email                                                                                                                                |
+| `file`           | Controle que permite ao usuário selecionar um arquivo; o atributo `accept` define os formatos que o controle pode selecionar                                           |
+| `hidden`         | Um input que não é exibido, mas o valor é enviado ao servidor                                                                                                          |
+| `image`          | Botão gráfico; deve ser acompanhado de `src` para definir a fonte da imagem                                                                                            |
+| `month`          | Controle para definir mês e ano, sem fuso horário                                                                                                                      |
+| `number`         | Controle para inserir um número de ponto flutuante                                                                                                                     |
+| `password`       | Campo de texto com uma linha só cujo valor é obscurecido                                                                                                               |
+| `radio`          | Botão de escolha; deve ser acompanhado do atributo `value` para definir o valor do item. Botões com o mesmo atributo `name` são agrupados e só um pode ser selecionado |
+| `range`          | Controle para inserir um número em um range, como um slider                                                                                                            |
+| `search`         | Campo de texto com uma só linha para digitar termos de busca                                                                                                           |
+| `submit`         | Botão de enviar                                                                                                                                                        |
+| `tel`            | Campo para inserir um número de telefone                                                                                                                               |
+| `time`           | Controle para inserir horário sem fuso horário                                                                                                                         |
+| `url`            | Campo de texto para inserir um link                                                                                                                                    |
+| `week`           | Controle para inserir uma data consistindo de ano da semana e número da semana sem fuso horário                                                                        |
+
+##### Outros atributos
+
+| Atributos        | Valor                               | Descrição                                                                                                         |
+| ---------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --- |
+| `accept`         | `audio/*`, `image/png`, `.pdf`      | Quais tipos de arquivo o servidor aceita (somente `type=file`)                                                    |
+| `alt`            | texto                               | Texto alternativo para imagens (somente `type=image`)                                                             |
+| `autocomplete`   | `on` ou `off`                       | Se o valor do controle pode ser completado automaticamente pelo navegador                                         |
+| `autofocus`      | autofocus                           | Se o elemento deve ter foco automaticamente quando a página carrega                                               |
+| `checked`        | checked                             | Se o elemento deve estar pré-selecionado (somente `type=checkbox`, `type=radio`)                                  |
+| `disable`        | disabled                            | Indica que o controle não está disponível para interação                                                          |     |
+| `form`           | _form-id_                           | O elemento `form` ao qual o elemento `input` está associado                                                       |     |
+| `formaction`     | _URL_                               | URL de um programa que processa a informação enviada pelo elemento (somente `type=submit`, `type=image`)          |
+| `formenctype`    |                                     | Especifica o tipo de conteúdo que deve ser usado para enviar o formulário para o servidor                         |
+| `formmethod`     | `get`, `post`                       | Especifica o método HTTP que o navegador deve usar para enviar o formulário (somente `type=submit`, `type=image`) |
+| `formnovalidate` | formnovalidate                      | Especifica que o formulário não deve ser validado quando enviado                                                  |
+| `formtarget`     | `_blank`, `_self`, `parent`, `_top` | É um nome ou palavra-chave indicando onde mostrar a resposta recebida após a submissão do formulário              |
+| `height`         | _pixels_                            | Define a altura da imagem (somente `type=image`)                                                                  |
+| `list`           | `datalist_id`                       | Identifica uma lista de opções pré-definidas de sugestões para o usuário                                          |
+| `max`            | número, data                        | Valor/data máximo para o item                                                                                     |
+| `maxlength`      | número                              | Especifica o número máximo de caracteres                                                                          |
+| `min`            | número, data                        | Valor/data mínimo para o item                                                                                     |
+| `minlength`      | número                              | Especifica o número mínimo de caracteres                                                                          |
+| `multiple`       | multiple                            | Indica se o usuário pode inserir mais de um valor (somente `type=email`, `type=file`)                             |
+| `name`           | texto                               | nome do controle                                                                                                  |
+| `pattern`        | _regexp_                            | Expressão regular usada para validar o valor do controle                                                          |
+| `placeholder`    | texto                               | Dica para o usuário do que ele pode inserir no controle                                                           |
+| `readonly`       | readonly                            | Indica que o usuário não pode modificar o valor do controle                                                       |
+| `required`       | required                            | especifica que o usuário deve preencher o campo com um valor antes de enviar o formulário                         |
+| `size`           | número                              | Tamanho inicial do controle                                                                                       |
+| `src`            | URL                                 | Especifica uma URL para a localização de uma imagem a ser exibida no botão gráfico (somente `type=image`)         |
+| `step`           | número, `any`                       | limitar os incrementos em que valores numéricos ou datas podem ser alterados                                      |
+| `value`          | texto                               | Valor inicial do controle                                                                                         |
+| `width`          | _pixels_                            | define a largura da imagem (somente `type=image`)                                                                 |
+
+### Button
+
+Define um botão clicável. Dentro do elemento pode ser inserido texto (e outras TAGs como: `i`, `b`, `strong`,`br`, `ìmg`, etc). Isso não é possível com um botão criado com o elemento `input`.
+
+```html
+<button type="submit">Envie este formulário</button>
+```
+
+O comportamento padrão do botão com `type=submit`, sem qualquer outro atributo, é de enviar os dados para o local especificado no valor do `action`.
+
+##### Atributos
+
+| Atributos        | Valor                               | Descrição                                                                                            |
+| ---------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `autofocus`      | autofocus                           | Se o elemento deve ter foco automaticamente quando a página carrega                                  |
+| `disable`        | disabled                            | Indica que o botão não está disponível para interação                                                |
+| `form`           | _form-id_                           | O elemento `form` ao qual o elemento `button` está associado                                         |
+| `formaction`     | _URL_                               | URL para onde a informação será enviada (somente `type=submit)`                                      |
+| `formenctype`    |                                     | Especifica o tipo de conteúdo que deve ser usado para enviar o formulário para o servidor            |
+| `formmethod`     | `get`, `post`                       | Especifica o método HTTP que o navegador deve usar para enviar o formulário (somente `type=submit`)  |
+| `formnovalidate` | formnovalidate                      | Especifica que o formulário não deve ser validado quando enviado                                     |
+| `formtarget`     | `_blank`, `_self`, `parent`, `_top` | É um nome ou palavra-chave indicando onde mostrar a resposta recebida após a submissão do formulário |
+| `name`           | texto                               | nome do controle                                                                                     |
+| `value`          | texto                               | Valor inicial do controle                                                                            |
+
+### Data-attributes
+
+É utilizado para guardar dados privados personalizados para a página ou aplicativo; dá a capacidade de incorporar dados personalizados para qualquer elemento HTML. Os dados guardados podem ser manipulados através do CSS, para estilizar o elemento, e JavaScript, para criar uma experiência de usuário mais engajada.
+
+Não deve ser atribuído em dados visíveis, pois tecnologias de acessibilidade podem não identificar seus valores. Dados personalizados com o prefixo `data-` serão completamente ignorados por agentes de usuário.
+
+Sua estrutura é dividida em:
+
+- Primeira parte é o identificador deste dado, que consiste em `data-` + o nome de sua escolha que melhor identifica o tipo de dado a ser atribuído
+- Segunda parte é o valor atribuído à este dado, o valor deve sempre estar entre aspas "" e dessa maneira é lido como `string`
+
+```html
+<h1>Lista de tintas:</h1>
+<ul id="lista">
+  <li
+    data-cor="laranja"
+    data-tipo="tinta-exterior"
+    onclick="mudaCores(this)"
+    class="item"
+  >
+    Tinta laranja
+  </li>
+  <li
+    data-cor="branco"
+    data-tipo="tinta-interior"
+    onclick="mudaCores(this)"
+    class="item"
+  >
+    Tinta branca
+  </li>
+  <li
+    data-cor="rosa"
+    data-tipo="tinta-exterior"
+    onclick="mudaCores(this)"
+    class="item"
+  >
+    Tinta rosa
+  </li>
+</ul>
+
+<script>
+  function mudaCores(elementos) {
+    var cores = elementos.getAttribute("data-cor");
+    var tipoElemento = elementos.getAttribute("data-tipo");
+  }
+</script>
+```
+
+O prefixo `data-` não é obrigatório para definir um `data-attribute`, pode-se alterar o código para a seguinte forma:
+
+```html
+<h1>Lista de tintas:</h1>
+<ul id="lista">
+  <li
+    cor="laranja"
+    tipo="tinta-exterior"
+    onclick="mudaCores(this)"
+    class="item"
+  >
+    Tinta laranja
+  </li>
+  <li cor="branco" tipo="tinta-interior" onclick="mudaCores(this)" class="item">
+    Tinta branca
+  </li>
+  <li cor="rosa" tipo="tinta-exterior" onclick="mudaCores(this)" class="item">
+    Tinta rosa
+  </li>
+</ul>
+
+<script>
+  function mudaCores(elementos) {
+    var cores = elementos.getAttribute("cor");
+    var tipoElemento = elementos.getAttribute("tipo");
+  }
+</script>
 ```
 
 ## Começando com o JavaScript
@@ -324,7 +534,7 @@ Variável que guarda mais de um valor. É uma estrutura de dados que serve para 
 No JavaScript, os arrays se comportam como uma lista de itens, sendo que esta lista começa a contar a partir do índice zero.
 
 ```js
-var cores = ['Azul', 'Vermelho', 'Preto', 'Roxo', 'Branco', 'Cinza']
+var cores = ["Azul", "Vermelho", "Preto", "Roxo", "Branco", "Cinza"];
 ```
 
 Cada item é um elemento, cada elemento possui e é acessado por um índice, cada índice pode ter um item que possui mais de um elemento, ou seja, um array pode ter outro array como item.
@@ -338,11 +548,11 @@ Cada item da lista é separado por vírgula e ocupa uma posição do array inici
 Podemos acessar um elemento de um array usando o nome da variável seguido de colchetes e seu índice → `nomeVar[0]`
 
 ```js
-var listaDeFrutas = ['Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango'];
+var listaDeFrutas = ["Maçã", "Uva", "Banana", "Abacaxi", "Morango"];
 
 var primeiroItem = listaDeFrutas[0]; // Maçã
 var terceiroItem = listaDeFrutas[2]; // Banana
-var quintoItem = listaDeFrutas[4] // Morango
+var quintoItem = listaDeFrutas[4]; // Morango
 ```
 
 Outra forma de acessar os elementos de um array é iterando dentro dele, ou seja, percorrendo todos os seus itens através de laços de repetição como: `while`, `for` e `forEach`
@@ -357,11 +567,11 @@ Outra forma de acessar os elementos de um array é iterando dentro dele, ou seja
 - Por padrão, a procura começa no primeiro elemento e e termina no último
 
 ```js
-array.indexOf(item, start) // sintaxe, item - obrigatório, start - opcional
+array.indexOf(item, start); // sintaxe, item - obrigatório, start - opcional
 
-var listaDeFrutas = ['Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango'];
-var procura = indexOf('Abacaxi', 4); // -1
-var procura = indexOf('Abacaxi'); // 3
+var listaDeFrutas = ["Maçã", "Uva", "Banana", "Abacaxi", "Morango"];
+var procura = indexOf("Abacaxi", 4); // -1
+var procura = indexOf("Abacaxi"); // 3
 ```
 
 `push()` → adiciona um item ao final do array. Recebe o(s) novo(s) item(s) como parâmetro.
@@ -388,15 +598,15 @@ array.unshift(item1, item2... itemN) // sintaxe
 listaDeFrutas('Tomate', 'Laranja'); // ['Tomate', 'Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba', 'Carambola']
 ```
 
-`pop` → remove o último item do array. 
+`pop` → remove o último item do array.
 
 - Modifica o array original
 - Retorna o elemento removido
 
 ```js
-array.pop() // sintaxe
+array.pop(); // sintaxe
 
-listaDeFrutas.pop() // 'Carambola'
+listaDeFrutas.pop(); // 'Carambola'
 // ['Tomate', 'Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba']
 ```
 
@@ -406,12 +616,11 @@ listaDeFrutas.pop() // 'Carambola'
 - Retorna o elemento removido
 
 ```js
-array.pop() // sintaxe
+array.pop(); // sintaxe
 
-listaDeFrutas.pop() // 'Tomate'
+listaDeFrutas.pop(); // 'Tomate'
 // ['Laranja', 'Maçã', 'Uva', 'Banana', 'Abacaxi', 'Morango', 'Goiaba']
 ```
-
 
 `splice` → remove items de uma posição a outra e retorna um novo array com os itens removidos. Recebe como parâmetros opcionais a posição inicial e final.
 
@@ -420,14 +629,14 @@ listaDeFrutas.pop() // 'Tomate'
 - Não modifica o array original
 
 ```js
-array.slice(start, end)
+array.slice(start, end);
 
-listeDeFrutas.slice(1, 4) // ['Maçã', 'Uva', 'Banana']
+listeDeFrutas.slice(1, 4); // ['Maçã', 'Uva', 'Banana']
 ```
 
 ### Objetos
 
-Podem ser definidos como uma coleção de dados. Para criar objetos no JavaScript é preciso utilizar as chaves {}, dentro delas são inseridos pares de propriedade e valor separados por vírgula. 
+Podem ser definidos como uma coleção de dados. Para criar objetos no JavaScript é preciso utilizar as chaves {}, dentro delas são inseridos pares de propriedade e valor separados por vírgula.
 
 Assim como em um livro físico, os pares se dão seguindo o exemplo `propriedade: valor` → `titulo: Senhor dos Anéis`.
 
@@ -435,22 +644,103 @@ A maioria dos livros tem as mesmas propriedades, mas os valores das propriedades
 
 ```js
 var livro = {
-  titulo: 'Crush',
-  autor: 'Richard Siken',
-  genero: 'Poesia',
-  editora: 'Unknown',
-  preco: 31.50
-}
+  titulo: "Crush",
+  autor: "Richard Siken",
+  genero: "Poesia",
+  editora: "Yale University Press",
+  preco: 31.5,
+};
 ```
+
+#### Acessando e editando
 
 É possível acessar a propriedade de um objeto usando **dot notation** ou **array notation**. Ambos inicializam com o nome do objeto para o acesso, seguido de: **ponto** para a notação de ponto e **colchetes** para a notação de array, seguido do item que se quer acessar - pode ser o nome da propriedade, item de um array, ou uma chamada para um método do objeto.
 
 ```js
-livro.autor // 'Richard Siken'
-livro['autor'] // 'Richard Siken'
+livro.autor; // 'Richard Siken'
+livro["autor"]; // 'Richard Siken'
 ```
 
 **Dot notation** é preferível sobre **array notation** por ser mais sucinto e fácil de ler, porém, há casos onde é necessário usar os colchetes. Por exemplo, se o nome de uma propriedade de um objeto esta em uma variável, não se pode usar o **dot notation** para acessa-lo, mas se pode acessar com o **array notation**.
+
+```js
+var livros = [
+  {
+    titulo: "Crush",
+    autor: "Richard Siken",
+    genero: "Poesia",
+    editora: "Yale University Press",
+    preco: 31.5,
+  },
+  {
+    titulo: "2012",
+    autor: "Anne Holt",
+    genero: "Romance policial",
+    editora: "Fundamento",
+    preco: 29.9,
+  },
+  {
+    titulo: "White is for Witching",
+    autor: "Helen Oyeyemi",
+    genero: "Horror gótico",
+    editora: "Picador",
+    preco: 50.97,
+  },
+];
+
+livros[2].genero = "Mistério"; // altera o valor da propriedade genero do 3 item da lista de objetos
+livros[2].genero; // 'Mistério'
+
+livros[0].estoque = "7 unidades"; // insere nova propriedade e valor no primeiro item da lista de objetos
+livros[0].estoque; // '7 unidades'
+
+delete livros[1].autor; // deleta a propriedade autor do 2 item da lista de objetos
+livros[1].autor; // undefined
+
+delete livros[1]; // deleta o 2 item da lista de objetos
+console.log(livros[1]); // undefined
+```
+
+#### This
+
+A keyword `this` em uma função declarada se refere ao "dono" da função.
+
+```js
+var livro = {
+  titulo: 'White is for Witching',
+  autor: 'Helen Oyeyemi',
+  genero: 'Horror gótico',
+  editora: 'Picador',
+  preco: 50.97,
+  fullName : function() {
+    return this.titulo + " de " + this.autor;
+}
+```
+
+Nesse exemplo, `this` se refere ao objeto **livro**, ou seja `this.titulo` significa a propriedade `titulo` de `this`/`livro`.
+
+Ao que o `this` se refere depende de como é usado:
+
+|                                                                                         |
+| --------------------------------------------------------------------------------------- |
+| Em um método de objeto, `this` se refere ao **object**                                  |
+| Sozinho, `this` se refere ao **global object**                                          |
+| Em uma função, `this` se refere ao **global object**                                    |
+| Em uma função, em modo restrito, `this` é **undefined**                                 |
+| Em um evento, `this` se refere ao **element** que recebe o evento                       |
+| Métodos como `call()`, `apply()`, e `bind()` podem referir `this` a qualquer **object** |
+
+`this` **não é uma variável, é uma keyword; seu valor não pode ser alterado.**
+
+#### Não declare strings, numbers e booleans como objects
+
+Quando uma variável é declarada com a keyword `new`, a variável é criada como um objeto. Evite criar objetos `string`, `number` e `boolean`, eles complicam o código e diminuem a velocidade da execução.
+
+```js
+x = new String(); // Declares x como um objeto String
+y = new Number(); // Declares y como um objeto Number
+z = new Boolean(); // Declares z como um objeto Boolean
+```
 
 ---
 
@@ -777,3 +1067,303 @@ console.log(numString + numInt); // imprime 2111, conversão implícita do numbe
 ---
 
 ## Condicionais
+
+Expressões condicionais são usadas para executar diferentes ações com base em diferentes condições. No JavaScript há 4 declarações condicionais:
+
+- `if` é usado para especificar o bloco de código que será executado caso uma condição seja verdadeira
+- `else` é usado para especificar o bloco de código que será executado caso a mesma condição seja falsa
+- `else if` é usado para especificar o bloco de código que será executado caso a primeira condição seja falsa, mas essa mesma seja verdadeira
+- `switch` é usado para especificar vários blocos alternativos de código que serão executados dependendo da condição de cada um
+
+```js
+if (condição) {
+  // bloco de código que será executado se a condição retornar true
+} elif (condição2) {
+  // bloco de código que será executado caso a primeira condição retorne false, mas essa retorne true
+} else {
+  // bloco de código que será executado caso todas as outras condições retornem false
+}
+```
+
+- Uma declaração `if` pode ser usada sozinha, sem `else` ou `else if`
+- Uma declaração `else` sempre acompanha um `if`, não pode ser usado sozinho ou acompanhar um `else if` sem `if`
+- Uma declaração `else if` sempre acompanha um `if`, não pode ser usado sozinho e pode ser usado junto de um `else`, mas sempre ao lado do `if`
+
+```js
+switch (expressão) {
+  case x:
+    // bloco de código
+    break; // necessário para "quebrar" a execução para fora do bloco do switch
+  case y:
+    // bloco de código
+    break;
+  default: // pode ser usado como primeiro caso, mas deve receber um break
+  // bloco de código
+  // o último caso não precisa de break, pois a execução do switch para no final de qualquer modo
+}
+```
+
+- A expressão `switch` é avalizada uma vez
+- O valor da expressão é comparado com os valores de cada caso
+- Se há um match, o bloco de código associado ao caso será executado
+- Se não há match, o bloco de código do caso padrão será executado
+- Se o `break` for omitido, o próximo caso será executado mesmo que não dê match
+- Se múltiplos casos derem match, só o primero será executado
+- Se o caso padrão for omitido, o programa continuará para a próxima declaração após o `switch`
+
+```js
+let x = "0"; // string
+switch (x) {
+  case 0: // number
+    texto = "Off";
+    break;
+  case 1:
+    texto = "On";
+    break;
+  default: // esse será o caso executado, pois "0" !== 0
+    texto = "Nenhum valor encontrado";
+}
+```
+
+- Casos `switch` usam comparações estritas (===), ou seja, comparações de valor e tipo de dado. O valor deve ser do mesmo tipo para que haja match.
+
+```js
+0 == "0"; // true
+0 === "0"; // false
+0 != "0"; // false
+0 !== "0"; // true
+```
+
+## Loops
+
+Loops podem executar um bloco de código por um número x de vezes. Um loop é muito útil quando se quer executar um bloco de código de novo e de novo, com valores diferentes cada vez.
+
+Geralmente, este é o caso quando se trabalha com arrays:
+
+```js
+for (let i = 0; i < carros.length; i++) {
+  texto += carros[i] + "<br>";
+}
+```
+
+O JavaScript suporta 5 tipos diferentes de loop:
+
+- `for` percorre por um bloco de código um número x de vezes
+- `for/in` percorre pelas propriedades de um objeto
+- `for/of` percorre pelos valores de um objeto iterável
+- `while` percorre por um bloco de código enquanto uma condição for verdadeira
+- `do/while` também percorre por um bloco de código enquanto uma condição for verdadeira
+
+### For
+
+A declaração `for` percorre por um bloco de código um número x de vezes:
+
+```js
+for (expressão 1; expressão 2; expressão 3) {
+  // bloco de código que será executado
+
+  for (let i = 0; i < 5; i++) {
+  texto += "O número é " + i + "<br>";
+}
+```
+
+- **Expressão 1** será executada uma vez antes da execução do bloco de código
+  - Normalmente inicializa a variável que será usado no loop
+  - É opcional, pode ser omitido. Por exemplo, caso a variável seja declarada antes do loop
+  - várias variáveis podem ser inicializadas (separadas por vírgula)
+
+```js
+// Opção 1
+for (let i = 0, len = carros.length, texto = ""; i < len; i++) {
+  texto += carros[i] + "<br>";
+}
+
+// Opção 2
+let i = 2;
+let len = carros.length;
+let texto = "";
+for (; i < len; i++) {
+  texto += carros[i] + "<br>";
+}
+```
+
+- **Expressão 2** define a condição para a execução do bloco de código
+
+  - Normalmente é usado para avaliar a condição da variável inicial
+  - É opcional, porém, é necessário adicionar um `break` dentro do loop para que não seja infinito e crash
+  - Se retornar `true`, o loop começará de novo. Se retornar `false`, o loop terminará
+
+- **Expressão 3** é executado toda vez após a execução do bloco de código
+  - Normalmente incrementa o valor da variável inicial
+  - É opcional, pode ser omitido. Por exemplo, caso os valores sejam incrementados dentro do loop
+  - Pode fazer de tudo, como: incrementar negativamente (--), incrementar positivamente (i = i + 15), etc
+
+```js
+let i = 0;
+let len = carros.length;
+let texto = "";
+for (; i < len; ) {
+  texto += carros[i] + "<br>";
+  i++;
+}
+```
+
+#### Escopo do loop
+
+Usando `var`, a variável declarada no loop redeclara a variável fora do loop.
+
+```js
+var i = 5;
+
+for (var i = 0; i < 10; i++) {
+  // algum código
+}
+
+// aqui i é 10
+```
+
+Usando `let`, a variável declarada no loop não é redeclarada fora do loop; quando `let` é usado para declarar a variável em um loop, a variável será somente visível dentro do loop.
+
+```js
+let i = 5;
+
+for (let i = 0; i < 10; i++) {
+  // algum código
+}
+
+// aqui i é 5
+```
+
+### For in
+
+A declaração `for in` percorre pelas propriedades de um objeto:
+
+```js
+for (key in object) {
+  // bloco de código que será executado
+}
+
+const pessoa = { fnome: "John", lnome: "Doe", idade: 25 };
+
+let texto = "";
+for (let x in pessoa) {
+  // o loop for in itera sobre o objeto pessoa
+  texto += pessoa[x]; // cada iteração retorna uma key (x), a key é usada para acessar o valor da key
+  // o valor da key é pessoa[x]
+}
+```
+
+A declaração `for in` também pode ser usada para percorrer sobre as propriedades de um array:
+
+```js
+for (variavel in array) {
+  // bloco de código
+}
+
+const numeros = [45, 4, 9, 16, 25];
+
+let txt = "";
+for (let x in numeros) {
+  txt += numeros[x];
+}
+```
+
+Não use `for in` em um array se a order do índice é importante. A ordem é dependente da implementação, os valores acessado podem não ser na ordem esperada. É melhor usar um `for` loop, `for of` loop ou um `Array.forEach()` quando a ordem é importante.
+
+```js
+const numeros = [45, 4, 9, 16, 25];
+
+let txt = "";
+numeros.forEach(minhaFuncao); // chama a função uma vez por cada elemento do array
+
+function minhaFuncao(value, index, array) {
+  txt += value;
+}
+```
+
+### For of
+
+A declaração `for of` percorre pelos valores de um objeto iterável. Deixa percorrer sobre uma estrutura de dados iterável como: Arrays, Strings, Maps, NodeLists, e outras:
+
+```js
+for (variavel of iteravel) {
+  // bloco de código que será executado
+}
+```
+
+**Variável** - Para cada iteração o valor da próxima propriedade é atribuído para a variável. Pode ser declarada com: `var`, `let` ou `const`.
+
+**Iterável** - Um objeto tem propriedades iteráveis.
+
+```js
+// ARRAY
+const carros = ["BMW", "Volvo", "Mini"];
+
+let txt = "";
+for (let x of carros) {
+  txt += x;
+}
+
+// STRING
+let linguagem, = "JavaScript";
+
+let txt = "";
+for (let x of linguagem,) {
+txt += x;
+}
+```
+
+### While
+
+A declaração `while` percorre por um bloco de código enquanto uma condição for verdadeira:
+
+```js
+while (condicao) {
+  // bloco de código que será executado
+}
+
+while (i < 10) {
+  // irá executar enquanto i for menor que 10
+  texto += "O número é " + i;
+  i++;
+}
+```
+
+### Do while
+
+O loop `do while` é uma variação do loop `while`. Esse loop irá executar o bloco de código uma vez, antes de se checar se a condição é verdadeira, então irá repetir enquanto a condição retornar `true`.
+
+```js
+do {
+  // bloco de código que será executado
+} while (condicao);
+
+do {
+  texto += "O número é " + i;
+  i++;
+} while (i < 10);
+```
+
+### Break e continue
+
+A declaração `break` "pula para fora" do loop, seguindo para a próxima declaração após o loop:
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 3) {
+    break;
+  } // para o loop quando i for 3
+  texto += "O número é " + i + "<br>";
+}
+```
+
+A declaração `continue` "pula sobre" uma iteração do loop, seguindo para a próxima iteração no loop:
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 3) {
+    continue;
+  } // pula para a próxima iteração quando i for 3
+  texto += "O número é " + i + "<br>";
+}
+```
