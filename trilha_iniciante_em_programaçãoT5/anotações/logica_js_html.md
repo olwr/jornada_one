@@ -1,6 +1,6 @@
-# JavaScript e HTML: desenvolva um jogo e pratique lógica de programação
+# Lógica de programação com JavaScript e HTML
 
-- [JavaScript e HTML: desenvolva um jogo e pratique lógica de programação](#javascript-e-html-desenvolva-um-jogo-e-pratique-lógica-de-programação)
+- [Lógica de programação com JavaScript e HTML](#lógica-de-programação-com-javascript-e-html)
   - [Primeiros passos](#primeiros-passos)
       - [Convenções (boas práticas)](#convenções-boas-práticas)
   - [Começando com o HTML](#começando-com-o-html)
@@ -47,6 +47,11 @@
     - [While](#while)
     - [Do while](#do-while)
     - [Break e continue](#break-e-continue)
+  - [Bibliotecas / APIs / Frameworks](#bibliotecas--apis--frameworks)
+  - [Var, Let e Const (no JS)](#var-let-e-const-no-js)
+    - [Var](#var)
+    - [Let](#let)
+    - [Const](#const)
 
 ## Primeiros passos
 
@@ -750,6 +755,23 @@ Para permitir alterações na página, ao carregar o HTML, os navegadores carreg
 
 O termo “documento” é frequentemente utilizado em referência à nossa página, documento e página são sinônimos. Ao alterar os elementos da página, o navegador sincroniza as mudanças e altera a aplicação em tempo real.
 
+![](../imgs/dom_estrutura.webp)
+
+Em código:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My title</title>
+  </head>
+  <body>
+    <a href="My link"></a>
+    <h1>My header</h1>
+  </body>
+</html>
+```
+
 O DOM modifica dinamicamente a estrutura do HTML, sem precisar atualiza-lo, pode:
 
 - Adicionar/modificar/remover tags, textos, imagens e qualquer outro elemento no HTML
@@ -770,6 +792,10 @@ document.getElementByTagName(name)
 document.querySelector("name")
 // seleciona um ou mais elementos por id, classe ou nome
 document.querySelectorAll("name[attr=val]")
+// cria um elemento no HTML
+document.createElement("type")
+// escuta um evento de um elemento HTML ou objeto DOM
+document.addEventListener("event", function, useCapture)
 ```
 
 ```js
@@ -877,7 +903,7 @@ var calculo = (prova.acertos / prova.questoes) * prova.peso;
 escreveMensagem("Eu acertei: " + calculo + "% da prova");
 ```
 
-Funções também atribuir valores a variáveis ao retornar dados, para isso, é necessário o uso da keyword `return` dentro da função seguido do que se deseja retornar. O JavaScript processa/executa a função, pega o valor e o retorna para a variável que, quando o recebe, guarda na memória.
+Funções também atribuem valores a variáveis ao retornar dados, para isso, é necessário o uso da keyword `return` dentro da função seguido do que se deseja retornar. O JavaScript processa/executa a função, pega o valor e o retorna para a variável que, quando o recebe, guarda na memória.
 
 ```js
 function calculaIMC(peso, altura) {
@@ -938,11 +964,13 @@ Existem diversos eventos que podem ser utilizados em elementos para que a intera
 
 Existem também uma série de outros eventos mais avançados, como os que permitem a criação de interações para drag-and-drop, e até mesmo a criação de eventos customizados.
 
+[DOM Event Object](https://www.w3schools.com/jsref/dom_obj_event.asp)
+
 ### Hoisting
 
-A função pode ser chamada antes mesmo de ter sido declarada.
+Uma função pode ser chamada antes mesmo de ter sido declarada.
 
-Hoisting permite a execução de funções antes das suas declarações, na prática, inicialmente as declarações de funções são colocadas na memória durante a fase de compilação e, mesmo assim, permanecem no mesmo lugar que estão digitadas. A razão pela qual o código funciona é que os mecanismos JavaScript movem a função para o início do escopo.
+Hoisting permite a execução de funções antes das suas declarações. Na prática, inicialmente as declarações de funções são colocadas na memória durante a fase de compilação e, mesmo assim, permanecem no mesmo lugar que estão digitadas. A razão pela qual o código funciona é que os mecanismos JavaScript movem a função para o início do escopo.
 
 ```js
 console.log(soma(2, 5)); // 7
@@ -1367,3 +1395,145 @@ for (let i = 0; i < 10; i++) {
   texto += "O número é " + i + "<br>";
 }
 ```
+
+---
+
+## Bibliotecas / APIs / Frameworks
+
+| Ferramente                              | Descrição                                                                                                                                                                                                                                          |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API (Application Programming Interface) | São mecanismos que permitem a comunicação (cliente - servidor) entre dois componentes de software por meio de um conjunto de definições e protocolos. Existem quatro formas de funcionamento: APIs SOAP, APIs RPC, APIs WebSocket e APIs REST.     |
+| Bibliotecas                             | Coleção de subprogramas com diversas finalidades para redução do uso de código no desenvolvimento de software. Permite o compartilhamento e a alteração de código e dados de forma modular.                                                        |
+| Frameworks                              | Estrutura que envolve um conjunto de bibliotecas ou componentes usados para criar uma base onde a aplicação será construída. Proporciona reusabilidade e conexões de linhas de código e provê funcionalidades que se adequa a diversas aplicações. |
+
+## Var, Let e Const (no JS)
+
+As declarações `var`, `let` e `const` são todas responsáveis por armazenar dados em um espaço de memória, suas diferenças principais estão no escopo e comportamento de hoisting.
+
+Escopo define onde as variáveis poderão ser utilizadas, ou seja, quais blocos de código podem usar e acessar elas. Se divide em 2: escopo global e escope de função/local.
+
+### Var
+
+Quando uma declaração `var` é feita fora de uma função recebe o escopo global. Isso significa que qualquer `var` que seja declarada fora de um bloco de função pode ser utilizada na janela inteira.
+
+Ela só tem escopo local quando declarada dentro de uma função. Isso significa que só estará disponível e poderá ser acessada de dentro daquela função.
+
+```js
+var greeter = "hey hi";
+
+function newFunction() {
+  var hello = "hello";
+}
+```
+
+Aqui, `greeter` tem um escopo global, pois existe fora de uma função, enquanto `hello` tem escopo local. Por isso, não se pode acessar a variável `hello` fora de uma função:
+
+```js
+var greeter = "hey hi";
+
+function newFunction() {
+  var hello = "hello";
+}
+
+console.log(hello); // erro: hello não está definido
+console.log(greeter); // "hey hi"
+```
+
+Variáveis de `var` podem ser declaradas de novo e atualizadas/receber novos dados. Isso significa que ações como estas não irão gerar erros:
+
+```js
+var greeter = "hey hi";
+var greeter = "say Hello instead";
+/* ou */
+var greeter = "hey hi";
+greeter = "say Hello instead";
+```
+
+`var` sofre hoisting, ou seja, o JavaScript "joga" a variável para o topo do escopo, as inicializando antes de sua declaração e definindo com um valor `undefined`.
+
+```js
+/* O que está codado */
+console.log(greeter);
+var greeter = "say hello";
+/* Como o JS interpreta */
+var greeter;
+console.log(greeter); // greeter is undefined
+greeter = "say hello";
+```
+
+### Let
+
+`let` tem escopo de bloco, ou seja, tudo que é declarado com `let` só estará disponível dentro do bloco de código que onde foi declarado.
+
+```js
+let greeting = "say Hi";
+let times = 4;
+
+if (times > 3) {
+  let hello = "say Hello instead";
+  console.log(hello); // dirá "say Hello instead"
+}
+console.log(hello); // hello não está definido
+```
+
+`let` pode ser atualizado/receber novos valores, mas não pode ser redeclarado. Como `var`, pode ser atualizada dentro de seu escopo, porém, diferente de `var`, não pode ser declarado novamente neste mesmo escopo.
+
+```js
+/* Atualização pode */
+let greeting = "say Hi";
+greeting = "say Hello instead";
+/* Redeclaração não */
+let greeting = "say Hi";
+let greeting = "say Hello instead"; // erro: identificador 'greeting' já foi declarado
+```
+
+Porém, se for definida em escopos diferentes, não irá gerar erro:
+
+```js
+let greeting = "say Hi";
+if (true) {
+  let greeting = "say Hello instead";
+  console.log(greeting); // retornará "say Hello instead"
+}
+console.log(greeting); // retornará "say Hi"
+```
+
+O erro não ocorre por serem tratadas como variáveis diferentes, já que estão em escopos diferentes.
+
+Como `var`, também sofrem com o hoisting para o topo, mas, diferente do anterior, não é inicializado, gerando um erro de referência.
+
+### Const
+
+Declarações com `const` mantêm valores constantes. Compartilham alguns comportamentos com `let`.
+
+Tem escopo de bloco, ou seja, como `let`, somente podem ser acessadas dentro do bloco onde foram declaradas.
+
+`const` não pode ser atualizado nem redeclarado. Isso significa que seu valor se mantém o mesmo dentro do escopo. Tornando algo assim impossível:
+
+```js
+const greeting = "say Hi";
+greeting = "say Hello instead"; // erro: atribuição a uma variável constante.
+/* Ou */
+const greeting = "say Hi";
+const greeting = "say Hello instead"; // erro: identificador 'greeting' já foi declarado
+```
+
+Dessa forma, cada declaração com `const` deve ser inicializada (receber uma atribuição) no momento da declaração.
+
+Entretanto, um objeto declarado com `const` não pode ser atualizado, mas suas propriedades podem:
+
+```js
+/* Possível */
+const greeting = {
+  message: "say Hi",
+  times: 4,
+};
+greeting.message = "say Hello instead";
+/* Erro */
+greeting = {
+  words: "Hello",
+  number: "five",
+}; // erro:  atribuição a uma variável constante.
+```
+
+Assim como `var` e `let`, sofrem com o hoisting para o topo do escopo, mas não são inicializadas.
