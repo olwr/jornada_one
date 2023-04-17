@@ -16,7 +16,7 @@
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Trilha Iniciante de Programação
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-yellow "progresso")
 
-- [ ] Aprenda lógica de programação
+- [x] Aprenda lógica de programação
 - [ ] Crie suas páginas web
 - [ ] Ganhe experiência com Git
 - [ ] Encare os Challenges de Iniciante em Programação
