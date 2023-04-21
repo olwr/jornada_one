@@ -1,0 +1,9 @@
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--fundo-escuro);
+    color: var(--fonte-claro);
+    /* position: fixed; */
+}
+

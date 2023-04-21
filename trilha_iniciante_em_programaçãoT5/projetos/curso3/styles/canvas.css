@@ -1,0 +1,27 @@
+canvas {
+    background: whitesmoke;
+    margin: 1rem;
+    border: solid 5px black;
+    border-radius: 5px;
+}
+
+.principal {
+    display: inline-flex;
+}
+
+.inputs {
+    flex-direction: column;
+}
+
+.btn {
+    background: var(--fundo-claro);
+    color: var(--fonte-escuro);
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: var(--fundo-escuro);
+    color: var(--fonte-claro);
+    transition: 0.5s;
+    width: 15vh;
+}

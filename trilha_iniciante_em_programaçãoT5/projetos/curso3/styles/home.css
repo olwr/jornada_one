@@ -1,0 +1,30 @@
+.principal {
+    margin: 1rem;
+    text-align: center;
+    /* background: var(--fundo-claro); */
+}
+
+.titulo {
+    font-size: 1.5rem;
+    color: var(--fonte-escuro);
+    margin: 1.5rem 0;
+}
+
+.about {
+    display: flex;
+    padding: 0.5em;
+}
+
+embed {
+    width: 110.1%;
+    height: 446px;
+    float: left;
+    border-radius: 10px;
+    border: solid 1px aliceblue;
+    margin-right: 2rem;
+}
+
+.about p {
+    /* text-align: justify; */
+    align-self: center;
+}

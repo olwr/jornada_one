@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Zen+Dots&display=swap');
+/* VARIÁVEIS */
+:root {
+    font-family: 'Rubik', monospace;
+    --fundo-escuro: #002E4B;
+    --fundo-claro: #EAE0D5;
+    --fonte-escuro: #413f3d;
+    --fonte-claro: #fff;
+    font-size: 1em;
+}
+
+/*  */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* min-width: fit-content; */
+    background: var(--fundo-claro);
+}
+
+/* SCROLLBAR */
+:root::-webkit-scrollbar {
+    width: 1rem;
+}
+
+:root::-webkit-scrollbar-track {
+    background: #f2ece6;
+}
+
+:root::-webkit-scrollbar-thumb {
+    background: #cac5c1;
+    border-radius: 5px;
+}

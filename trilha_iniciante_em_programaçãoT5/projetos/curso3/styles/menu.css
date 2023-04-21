@@ -1,0 +1,55 @@
+.logo {
+    width: 115px;
+    height: 115px;
+    margin: 1em;
+}
+
+header {
+    background-color: antiquewhite;
+    /* padding: 0 1.5rem; */
+    color: var(--fonte-claro);
+}
+
+header h1 {
+    display: inline;
+    position: absolute;
+    top: 3.5rem;
+    left: 10rem;
+    font-size: 20px;
+}
+
+.container {
+    position: relative;
+    min-width: min-content;
+    min-height: min-content;
+    background: var(--fundo-escuro);
+    background: -moz-linear-gradient(90deg, rgba(0, 46, 75, 1) 0%, rgba(0, 80, 106, 1) 50%, rgba(12, 99, 128, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 46, 75, 1) 0%, rgba(0, 80, 106, 1) 50%, rgba(12, 99, 128, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 46, 75, 1) 0%, rgba(0, 80, 106, 1) 50%, rgba(12, 99, 128, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002e4b", endColorstr="#0c6380", GradientType=1);
+}
+
+nav {
+    position: absolute;
+    top: 3em;
+    right: 15px;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+    list-style: outside none none;
+    padding: 0;
+}
+
+nav a {
+    /* text-transform: ; */
+    color: var(--fonte-claro);
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #f1d092;
+}
