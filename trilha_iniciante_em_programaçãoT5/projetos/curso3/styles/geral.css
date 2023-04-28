@@ -6,6 +6,10 @@
     --fundo-claro: #EAE0D5;
     --fonte-escuro: #413f3d;
     --fonte-claro: #fff;
+    --tom: 200;
+    --saturacao: 50%;
+    --background: hsl(var(--tom), var(--saturacao), 20%);
+    --foreground: hsl(var(--tom), var(--saturacao), 75%);
     font-size: 1em;
 }
 
