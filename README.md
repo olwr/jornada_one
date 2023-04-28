@@ -18,6 +18,6 @@
 
 - [x] Aprenda lógica de programação
 - [x] Crie suas páginas web
-- [ ] Ganhe experiência com Git
+- [x] Ganhe experiência com Git
 - [ ] Encare os Challenges de Iniciante em Programação
 - [ ] Diagnóstico de aprendizado
