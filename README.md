@@ -21,3 +21,7 @@
 - [x] Ganhe experiência com Git
 - [x] Encare os Challenges de Iniciante em Programação
 - [x] Diagnóstico de aprendizado
+
+![](imgs/jornada-one-primeiros-passos.png)
+
+![](imgs/desafio.png)
