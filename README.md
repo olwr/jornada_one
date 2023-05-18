@@ -27,4 +27,6 @@
 ![](imgs/jornada-one-primeiros-passos.png)
 
 ### Desafio: Decodificador com JavaScript
+[github-pages do desafio](https://olwr.github.io/onet5-desafio1/)
+
 ![](imgs/desafio.png)
