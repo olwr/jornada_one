@@ -23,8 +23,8 @@
 - [x] Diagnóstico de aprendizado
 
 
-Site final feito após o curso 3: HTML E CSS
+### Site final feito após o curso 3: HTML e CSS
 ![](imgs/jornada-one-primeiros-passos.png)
 
-Desadio: Decodificador com JavaScript
+### Desafio: Decodificador com JavaScript
 ![](imgs/desafio.png)
