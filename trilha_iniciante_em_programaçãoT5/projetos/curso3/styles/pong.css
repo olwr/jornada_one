@@ -1,7 +1,0 @@
-.principal {
-    /* background-color: var(--foreground); */
-    background: url("../imgs/under_construction.jpeg") no-repeat fixed center;
-    background-size: cover;
-    overflow: hidden;
-    height: 75em;
-}
