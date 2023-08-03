@@ -6,15 +6,16 @@
     - [Nomeação](#nomeação)
     - [Sintaxe Básica](#sintaxe-básica)
     - [Identificadores](#identificadores)
-    - [Estruturas de Controle](#estruturas-de-controle)
     - [Palavras-chave](#palavras-chave)
     - [Regras de Declaração do Arquivo Fonte](#regras-de-declaração-do-arquivo-fonte)
     - [Pacote e Declarações de Importação](#pacote-e-declarações-de-importação)
   - [Objetos, Classes e Construtores](#objetos-classes-e-construtores)
-    - [Objetos](#objetos)
     - [Classe](#classe)
+    - [Objetos](#objetos)
     - [Construtores](#construtores)
+      - [Reaproveitamento](#reaproveitamento)
   - [Modificadores](#modificadores)
+    - [Referências](#referências)
   - [Variáveis](#variáveis)
     - [Data Types](#data-types)
       - [Conversões / Castings](#conversões--castings)
@@ -27,12 +28,44 @@
     - [Atribuição](#atribuição)
     - [Comparação](#comparação)
     - [Lógico](#lógico)
-  - [Condicionais e Loops](#condicionais-e-loops)
+  - [Estruturas de Controle: Condicionais e Loops](#estruturas-de-controle-condicionais-e-loops)
   - [Arrays](#arrays)
     - [Acessando Elementos](#acessando-elementos)
     - [Alterando um Elemento](#alterando-um-elemento)
     - [Looping](#looping)
     - [Array Multidimensional](#array-multidimensional)
+  - [Paradigma Procedural Vs. Objetos](#paradigma-procedural-vs-objetos)
+  - [Principais Características de OOP](#principais-características-de-oop)
+    - [Encapsulamento](#encapsulamento)
+      - [Get e Set](#get-e-set)
+      - [Por Que Encapsular?](#por-que-encapsular)
+    - [Herança](#herança)
+      - [Relacionamento IS-A](#relacionamento-is-a)
+      - [Instância](#instância)
+      - [Relação HAS-A](#relação-has-a)
+      - [Tipos de Herança](#tipos-de-herança)
+    - [Abstração](#abstração)
+    - [Interface](#interface)
+      - [Estendendo Interfaces](#estendendo-interfaces)
+      - [Interfaces de Marcação](#interfaces-de-marcação)
+      - [Notas Sobre Interfaces](#notas-sobre-interfaces)
+      - [Por Que e Quando Usar?](#por-que-e-quando-usar)
+    - [Polimorfismo](#polimorfismo)
+    - [Substituição](#substituição)
+      - [Regras para Substituição de Métodos](#regras-para-substituição-de-métodos)
+    - [Pacotes](#pacotes)
+      - [Criando um Pacote](#criando-um-pacote)
+    - [Design Patters e SOLID](#design-patters-e-solid)
+  - [Métodos](#métodos)
+    - [Parâmetros e Argumentos](#parâmetros-e-argumentos)
+    - [Valores de Retorno](#valores-de-retorno)
+    - [Sobrecarga de um Método](#sobrecarga-de-um-método)
+    - [Escopo](#escopo)
+    - [Recursão](#recursão)
+      - [Condição de Parada](#condição-de-parada)
+    - [This](#this)
+    - [Var-Args](#var-args)
+    - [Finalize()](#finalize)
 
 ## O que é Java?
 
@@ -182,10 +215,6 @@ Todos os componentes Java requerem nomes, esses nomes usados ​​para classes,
 - Exemplos de identificadores legais: idade, $ salary, _value, __1_value.
 - Exemplos de identificadores ilegais: 123abc, -salary.
 
-### Estruturas de Controle
-
-As estruturas de controle são usadas para controlar o fluxo de um programa. As estruturas mais comuns são if-else, switch-case, while, do-while e for.
-
 ### Palavras-chave
 
 Essas palavras reservadas não podem ser usadas como constantes ou variáveis ​​ou quaisquer outros nomes de identificador.
@@ -319,21 +348,44 @@ Java é uma linguagem orientada a objetos, por isso possui recursos dos conceito
 - Método
 - Passagem de mensagens
 
-### Objetos
+Uma classe é um conjunto de características e comportamentos que definem o conjunto de objetos pertencentes à essa classe, ou seja, a classe é um template para o objeto, que por fim, é a instância de uma classe. 
 
-Eles têm estados e comportamentos. Um objeto é uma instância de uma classe, ou seja, a classe é um template/blueprint na qual os objetos são criados. Então, um objeto é a instância (resultado) de uma classe. Sua criação envolve a alocação de memória para esse objeto.
+| Classe | Objeto  |
+| ------ | ------- |
+| Fruta  | Maça    |
+| Fruta  | Laranja |
+| Fruta  | Banana  |
+| Carro  | Impala  |
+| Carro  | Camaro  |
+| Carro  | Fusca   |
 
-Um exemplo: Um gato tem estados - cor, nome, raça; e também comportamento - miar, comer, espreitar. Ao comparar os objetos de software com objetos reais, pode se observar muitas semelhanças. Eles também possuem um estado e um comportamento - o estado de um objeto de software é armazenado em campos e o comportamento é mostrado por meio de métodos.
+No entanto, a classe em si é um conceito abstrato, como um molde, que se torna concreto e palpável através da criação de um objeto. Chamamos essa criação de ***instanciação da classe***, como se estivéssemos usando esse molde (classe) para criar um objeto.
 
-Um objeto tem 3 características:
+![](imgs/class-analogy.webp)
 
-- Estado → representa o dado (valor) de um objeto
-- Comportamento → representa o comportamento (funcionalidade) de um objeto como: deposito, pagamento, transferência...
-- Identidade → a identidade de um objeto é tipicamente implementado via um ID único. O valor de um ID não é visível para um user externo. No entanto, é usado internamente pelo JVM para identificar cada objeto unicamente
+```java
+public class Carro {
+    Double velocidade;
+    String modelo;
 
-![](imgs/characteristics-of-object.jpg)
+    public Carro(String modelo) {
+        this.modelo = modelo;
+        this.velocidade = 0;
+    }
 
-Dessa forma, no desenvolvimento de software, os métodos operam no estado interno de um objeto e a comunicação objeto a objeto é feita por meio de métodos.
+    public void acelerar() {
+        /* código do carro para acelerar */
+    }
+
+    public void frear() {
+        /* código do carro para frear */
+    }
+
+    public void acenderFarol() {
+        /* código do carro para acender o farol */
+    }
+}
+```
 
 ### Classe
 
@@ -346,6 +398,12 @@ Uma classe em Java contem:
 - Construtores
 - Blocos
 - Classes aninhadas e interface
+
+```java
+public class Main {
+  int x = 5;
+}
+```
 
 ![](imgs/class-in-java.png)
 
@@ -364,10 +422,10 @@ class Student{
 
 class TestStudent2{  
  public static void main(String args[]){  
-  Student s1=new Student();  
-  s1.id=101;  
-  s1.name="Sonoo";  
-  System.out.println(s1.id+" "+s1.name);//101 Sonoo
+  Student s1 = new Student();  
+  s1.id =  101;  
+  s1.name = "Sonoo";  
+  System.out.println(s1.id+" "+s1.name); //101 Sonoo
  }  
 }  
 ```
@@ -379,6 +437,35 @@ Pode conter qualquer um dos tipos de variáveis:
 - De classe → Variáveis ​​de classe são variáveis ​​declaradas dentro de uma classe, fora de qualquer método, com a palavra-chave estática.
 
 Uma classe pode ter vários métodos para acessar o valor de vários tipos de métodos.
+
+### Objetos
+
+Eles têm estados e comportamentos. Um objeto é uma instância de uma classe, ou seja, a classe é um template/blueprint na qual os objetos são criados. Então, um objeto é a instância (resultado) de uma classe. Sua criação envolve a alocação de memória para esse objeto.
+
+Um exemplo: Um gato tem estados - cor, nome, raça; e também comportamento - miar, comer, espreitar. Ao comparar os objetos de software com objetos reais, pode se observar muitas semelhanças. Eles também possuem um estado e um comportamento - o estado de um objeto de software é armazenado em campos e o comportamento é mostrado por meio de métodos.
+
+Um objeto tem 3 características:
+
+- Estado → representa o dado (valor) de um objeto
+- Comportamento → representa o comportamento (funcionalidade) de um objeto como: deposito, pagamento, transferência...
+- Identidade → a identidade de um objeto é tipicamente implementado via um ID único. O valor de um ID não é visível para um user externo. No entanto, é usado internamente pelo JVM para identificar cada objeto unicamente
+
+![](imgs/characteristics-of-object.jpg)
+
+Dessa forma, no desenvolvimento de software, os métodos operam no estado interno de um objeto e a comunicação objeto a objeto é feita por meio de métodos.
+
+```java
+public class Main {
+  int x = 5;
+
+  public static void main(String[] args) {
+    Main myObj1 = new Main();  // Object 1
+    Main myObj2 = new Main();  // Object 2
+    System.out.println(myObj1.x);
+    System.out.println(myObj2.x);
+  }
+}
+```
 
 ### Construtores
 
@@ -450,9 +537,39 @@ public class ConsDemo {
 }
 ```
 
+#### Reaproveitamento
+
+Em algumas situações é necessário reaproveitar algum código em outro para evitar duplicações e facilitar a manutenção. A maneira de se fazer isto é chamando o construtor dentro de outro usando `this`.
+
+```java
+// A simple constructor.
+class MyClass {
+   int x;
+   int y;
+   
+   // Following is the constructor
+   public MyClass(int i, int n ) {
+      x = i;
+      y = n;
+   }
+
+   public myClass(int i) {
+    this(9, y)
+   }
+}
+
+public class ConsDemo {
+   public static void main(String args[]) {
+      MyClass t1 = new MyClass( 10, 15 );
+      MyClass t2 = new MyClass( 20 );
+      System.out.println(t1.x + " " + t2.x); // 10 9
+   }
+}
+```
+
 ## Modificadores
 
-São palavras-chave que você adiciona a essas definições para alterar seus significados.
+São palavras-chave que se adiciona a essas definições para alterar seus significados, para modificar o acesso de classes, atributos, métodos, etc.
 
 ```java
 public class className {
@@ -487,7 +604,7 @@ Para classes:
 Para atributos, métodos e construtores:
 
 | Modificador | Descrição                                                                                                   |
-|-------------|-------------------------------------------------------------------------------------------------------------|
+| ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `public`    | o código é acessível para qualquer outra                                                                    |
 | default     | o código é somente acessível por classes no mesmo pacote. É usado quando um modificador não é especificado. |
 | `private`   | o código é somente acessível dentro da classe declarada                                                     |
@@ -502,20 +619,22 @@ Para atributos, métodos e construtores:
 Para classes:
 
 | Modificador | Descrição                                                                                                                         |
-|-------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `final`     | a classe não pode ser herdada por outras classes                                                                                  |
 | `abstract`  | a classe não pode ser usada para criar objetos (para acessar uma classe abstrata, é preciso que ela seja herdada de outra classe) |
 
 Para atributos e métodos:
 
 | Modificador    | Descrição                                                                                                    |
-|----------------|--------------------------------------------------------------------------------------------------------------|
+| -------------- | ------------------------------------------------------------------------------------------------------------ |
 | `final`        | Atributos e métodos não podem ser sobrepostos/modificados                                                    |
 | `abstract`     | Só pode ser utilizado numa classe abstrata e só pode ser utilizado em métodos. O método não tem um corpo     |
 | `static`       | os atributos e métodos pertencem a classe, e não a um objeto                                                 |
 | `transient`    | os atributos e métodos são ignorados ao serializar o objeto que os contém                                    |
 | `synchronized` | os métodos só podem ser acessados por um thread de cada vez                                                  |
 | `volatile`     | o valor de um atributo não é armazenado em cache localmente no thread e é sempre lido da "memória principal" |
+
+### Referências
 
 ## Variáveis
 
@@ -557,16 +676,16 @@ Estão divididos em 2 grupos:
 
 Os data-types primitivos especificam tamanho e tipo de valor das variáveis, e não possuem nenhum método adicional.
 
-| Data-type | Size    | Descrição                                                                     |
-| --------- | ------- | ----------------------------------------------------------------------------- |
-| `byte`    | 1 byte  | armazena números inteiros  de -128 a 127                                      |
-| `short`   | 2 bytes | pode armazenar números inteiros de -32768 a 32767                             |
-| `int`     | 4 bytes | pode armazenar números inteiros de -2147483648 a 2147483647                   |
-| `long`    | 8 bytes | pode armazenar números inteiros de -9223372036854775808 a 9223372036854775808 |
-| `float`   | 4 bytes | pode armazenar números inteiros de 3.4e−038 a 3.4e+038                        |
-| `double`  | 8 bytes | pode armazenar números inteiros de 1.7e−308 a 1.7e+308                        |
-| `boolean` | 1 bit   | armazena valores true e false                                                 |
-| `char`    | 2 bytes | usada para armazenar um único caractere/letra ou valor ASCII                  |
+| Data-type | Size    | Descrição                                                                     | Valor Default   |
+| --------- | ------- | ----------------------------------------------------------------------------- | --------------- |
+| `byte`    | 1 byte  | armazena números inteiros  de -128 a 127                                      | 0               |
+| `short`   | 2 bytes | pode armazenar números inteiros de -32768 a 32767                             | 0               |
+| `int`     | 4 bytes | pode armazenar números inteiros de -2147483648 a 2147483647                   | 0               |
+| `long`    | 8 bytes | pode armazenar números inteiros de -9223372036854775808 a 9223372036854775808 | 0L              |
+| `float`   | 4 bytes | pode armazenar números inteiros de 3.4e−038 a 3.4e+038                        | 0.0f            |
+| `double`  | 8 bytes | pode armazenar números inteiros de 1.7e−308 a 1.7e+308                        | 0.0d            |
+| `boolean` | 1 bit   | armazena valores true e false                                                 | false           |
+| `char`    | 2 bytes | usada para armazenar um único caractere/letra ou valor ASCII                  | \u0000′ or null |
 
 ```java
 int idade = 21;
@@ -606,6 +725,7 @@ Os tipos não-primitivos são chamados de tipos de referência porque se referem
 - Primitivos sempre tem um valor, enquanto não-primitivos podem ser `null`.
 - Primitivos começam com letras minúsculas, não-primitivos começam com letras maiúsculas.
 - O tamanho dos tipos primitivos depende do data type, enquanto os não-primitivos tem todos os mesmos tamanhos.
+- O valor padrão de todos os tipos de referência é `null`.
 
 Exemplos de tipos não-primitivos são: `String`, `Arrays`, `Interface`, etc.
 
@@ -844,9 +964,9 @@ System.out.println(divisao); // 2.5
 | \|\|     | Lógico  or | Retorna true se uma das declarações for verdadeira               | x < 5 \|\| x < 4   |
 | !        | Lógico not | Reverte o resultado, retorna false se o resultado for verdadeiro | !(x < 5 && x < 10) |
 
-## Condicionais e Loops
+## Estruturas de Controle: Condicionais e Loops
 
-Condicionais são declarações que definem decisões que influenciam se uma declaração vai ou não ser executada, qual será a declaração executada dentre diferentes opções e também fazem o controle de loop.
+As estruturas de controle são usadas para controlar o fluxo de um programa. As estruturas mais comuns são if-else, switch-case, while, do-while e for. Condicionais são declarações que definem decisões que influenciam se uma declaração vai ou não ser executada, qual será a declaração executada dentre diferentes opções e também fazem o controle de loop.
 
 O Java tem as seguintes declarações condicionais:
 
@@ -1222,3 +1342,1275 @@ public class Main {
   }
 }
 ```
+
+## Paradigma Procedural Vs. Objetos
+
+A programação procedural (ou estruturada) é formada por procedimentos ou métodos que performam operações sobre os dados, enquanto a programação orientada a objetos (OOP ou POO) é formada por objetos que contêm ambos dados e métodos.
+
+Na programação estruturada, um programa é composto por três tipos básicos de estruturas:
+
+- Sequências: comandos a serem executados
+- Condições: sequências que só devem ser executadas se uma condição for satisfeita
+- Repetições: sequências que devem ser repetidas até/enquanto uma condição for satisfeita
+
+Essas estruturas são usadas para processar a entrada do programa, alterando os dados até que a saída esperada seja gerada. Todas essas estruturas também existem na programação orientada a objetos.
+
+A diferença principal é que, na programação procedural, um programa é escrito em uma única função, que pode ser quebrada em subfunções. Mas o fluxo continua o mesmo, como se pudéssemos copiar e colar o código das subfunções diretamente nas funções que as chamam, de forma que só haja uma grande função que execute todo o programa.
+
+![](imgs/fluxograma.webp)
+
+Além disso, o acesso às variáveis não possuem muitas restrições na programação estruturada. Em linguagens fortemente baseadas nesse paradigma, restringir o acesso à uma variável se limita a dizer se ela é visível ou não dentro de uma função (ou módulo, como no uso da palavra-chave `static`, na linguagem C), mas não se consegue dizer de forma nativa que uma variável pode ser acessada por apenas algumas funções do programa.
+
+O contorno para situações como essas envolve práticas de programação danosas ao desenvolvimento do sistema, como o uso excessivo de variáveis globais. Vale lembrar que variáveis globais são usadas tipicamente para manter estados no programa, marcando em qual parte dele a execução se encontra.
+
+A programação orientada a objetos surgiu como uma alternativa a essas características da programação estruturada. O intuito da sua criação também foi o de aproximar o manuseio das estruturas de um programa ao manuseio das coisas do mundo real, daí o nome "objeto" como uma algo genérico, que pode representar qualquer coisa tangível.
+
+Esse novo paradigma se baseia principalmente em dois conceitos chave: classes e objetos. Todos os outros conceitos, igualmente importantes, são construídos em cima desses dois.
+
+A programação orientada a objetos tem diversas vantagens sobre a estruturada, como:
+
+- É mais rápida e fácil de executar
+- Prove uma estrutura limpa para o programa
+- Ajuda a manter o código Java DRY "Don't Repeat Yourself"*, e torna o código mais fácil de manter, modificar e debugar
+- Torna possível a criação de aplicações completamente reusáveis com menos código e menor tempo de desenvolvimento
+
+**DRY** → o princípio é sobre reduzir a repetição de código. Códigos comuns na aplicação devem ser extraídos, colocados em um único lugar e reusados ao invés de repetidos.
+
+## Principais Características de OOP
+
+As suas duas bases são os conceitos de classe e objeto. Desses conceitos, derivam alguns outros conceitos extremamente importantes ao paradigma, que não só o definem como são as soluções de alguns problemas da programação estruturada. Os conceitos em questão são o encapsulamento, a herança, as interfaces e o polimorfismo.
+
+### Encapsulamento
+
+Sabemos que classes possuem atributos e métodos, ou seja, características e comportamentos. Os métodos de um carro, como acelerar, podem usar atributos e outros métodos do carro como o tanque de gasolina e o mecanismo de injeção de combustível, respectivamente, uma vez que acelerar gasta combustível.
+
+Ainda usando a analogia do carro, sabemos que ele possui atributos e métodos, ou seja, características e comportamentos. Os métodos do carro, como acelerar, podem usar atributos e outros métodos do carro como o tanque de gasolina e o mecanismo de injeção de combustível, respectivamente, uma vez que acelerar gasta combustível.
+
+![](imgs/oop-car-methods-and-attributes.webp)
+
+No entanto, se alguns desses atributos ou métodos forem facilmente visíveis e modificáveis, como o mecanismo de aceleração do carro, isso pode dar liberdade para que alterações sejam feitas, resultando em efeitos colaterais imprevisíveis. Dizemos, nesse caso, que o método de aceleração do seu carro não é visível por fora do próprio carro. Na OOP, um atributo ou método que não é visível de fora do próprio objeto é chamado de "privado" e quando é visível, é chamado de "público".
+
+![](imgs/encapsulation.webp)
+
+No encapsulamento se torna importante saber o que um método fará quando for executado, tirando a ênfase para o programa de como o objeto faz, só que ele o faça. Ler ou alterar um atributo encapsulado pode ser feito a partir de `getters` e `setters` (colocar referência).
+
+Esse encapsulamento de atributos e métodos impede o chamado vazamento de escopo, onde um atributo ou método é visível por alguém que não deveria vê-lo, como outro objeto ou classe. Isso evita a confusão do uso de variáveis globais no programa, deixando mais fácil de identificar em qual estado cada variável vai estar a cada momento do programa, já que a restrição de acesso nos permite identificar quem consegue modificá-la.
+
+Encapsulação é a certificação de que dados "sensíveis" não possam ser acessados por users, que eles fiquem escondidos. Para isso é necessário:
+
+- Declarar atributos/variáveis de classes como `private`
+- Prover métodos públicos `get` e `set` para acessar e atualizar os valores de uma variável privada
+
+```java
+public class Carro {
+    private Double velocidade;
+    private String modelo;
+    private MecanismoAceleracao mecanismoAceleracao;
+    private String cor;
+
+    /* Repare que o mecanismo de aceleração é inserido no carro ao ser construído, e
+        não o vemos nem podemos modificá-lo, isto é, não tem getter nem setter.
+        Já o "modelo" pode ser visto, mas não alterado. */
+    public Carro(String modelo, MecanismoAceleracao mecanismoAceleracao) {
+        this.modelo = modelo;
+        this.mecanismoAceleracao = mecanismoAceleracao;
+        this.velocidade = 0;
+    }
+
+    public void acelerar() {
+        this.mecanismoAceleracao.acelerar();
+    }
+
+    public void frear() {
+        /* código do carro para frear */
+    }
+
+    public void acenderFarol() {
+        /* código do carro para acender o farol */
+    }
+
+    public Double getVelocidade() {
+        return this.velocidade
+    }
+
+    private void setVelocidade() {
+        /* código para alterar a velocidade do carro */
+        /* Como só o próprio carro deve calcular a velocidade, 
+            esse método não pode ser chamado de fora, por isso é "private" */
+    }
+
+    public String getModelo() {
+        return this.modelo;
+    }
+
+    public String getCor() {
+        return this.cor;
+    }
+
+    /* podemos mudar a cor do carro quando quisermos */
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+}
+```
+
+#### Get e Set
+
+Atributos privados podem somente ser acessados dentro de sua mesma classe, porém, é possível acessa-los se forem oferecidos métodos `get` e `set` públicos.
+
+>`get` e `set` não são keywords do Java, mas sim uma convenção/prática comum de nomeação dos métodos que trabalham com atributos privados
+
+O método `get` retorna o valor da variável e o método `set` define o valor. A sintaxe para ambos é: `getNameOfVar`/`setNameOfVar`.
+
+```java
+public class Person {
+  private String name; // private = restricted access
+
+  // Getter
+  public String getName() {
+    return name;
+  }
+
+  // Setter
+  public void setName(String newName) {
+    this.name = newName;
+  }
+}
+```
+
+Para acessar e modificar um atributo é necessário chamar os métodos:
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Person myObj = new Person();
+    myObj.setName("John"); // Set the value of the name variable to "John"
+    System.out.println(myObj.getName());
+  }
+}
+
+// Outputs "John"
+```
+
+Setters e Getters devem ser usados com cautela e nem todos os atributos privados precisam ser expostos por meio desses dois métodos com riscos de cairmos em um modelo anêmico que tem os seus comportamentos controlados por outras classes.
+
+#### Por Que Encapsular?
+
+- Melhor controle de atributos e métodos de classes
+- Atributos de classe podem ser **read-only** (quando usado somente o método ``get`) ou **write-only** (quando usado somente o método `set`)
+- Flexível: o programador pode alterar uma parte do código sem afetar outras
+- Acrescentar segurança de dados
+
+### Herança
+
+Quando se diz que uma classe A é um tipo de classe B, significa que a classe A herda as características da classe B e que a classe B é mãe da classe A, estabelecendo então uma relação de herança entre elas.
+
+![](imgs/inheritance.webp)
+
+No Java, é possível herdar atributos e métodos de uma classe para outra. O conceito de herança é agrupado em duas categorias:
+
+- **Subclasse (filho) →** classe que herda de outra classe
+- **Superclasse (pai) →** classe que é herdada
+
+Para que ocorra a herança, é preciso usar a keyword `extends`.
+
+```java
+class Super {
+   .....
+   .....
+}
+class Sub extends Super {
+   .....
+   .....
+}
+```
+
+A keyword `super` é semelhante a `this`. Os cenários em que podem ser usada são:
+
+```java
+super.variable
+super.method();
+```
+
+- É usada para diferenciar os membros da superclasse dos membros da subclasse, se eles tiverem os mesmos nomes.
+- É usada para invocar o construtor superclasse da subclasse.
+
+```java
+// "extends" estabelece a relação de herança com a classe Carro
+public class HondaFit extends Carro {
+
+    public HondaFit(MecanismoAceleracao mecanismoAceleracao) {
+        String modelo = "Honda Fit";
+        // chama o construtor da classe mãe, ou seja, da classe "Carro"
+        super(modelo, mecanismoAceleracao);
+    }
+}
+```
+
+```java
+ss Vehicle {
+  protected String brand = "Ford";        // Vehicle attribute
+  public void honk() {                    // Vehicle method
+    System.out.println("Tuut, tuut!");
+  }
+}
+
+class Car extends Vehicle {
+  private String modelName = "Mustang";    // Car attribute
+  public static void main(String[] args) {
+
+    // Create a myCar object
+    Car myCar = new Car();
+
+    // Call the honk() method (from the Vehicle class) on the myCar object
+    myCar.honk();
+
+    // Display the value of the brand attribute (from the Vehicle class) and the value of the modelName from the Car class
+    System.out.println(myCar.brand + " " + myCar.modelName);
+  }
+}
+```
+
+Se não quiser que outras classes herdem de uma, é só usar a keyword `final`.
+
+```java
+final class Vehicle {
+  ...
+}
+
+class Car extends Vehicle {
+  ...
+}
+/* 
+Main.java:9: error: cannot inherit from final Vehicle
+class Main extends Vehicle {
+                  ^
+1 error)
+*/
+```
+
+#### Relacionamento IS-A
+
+IS-A é uma forma de dizer: este objeto é um tipo desse objeto. O `extends` é usado para obter herança dessa forma:
+
+```java
+public class Animal {
+}
+
+public class Mammal extends Animal {
+}
+
+public class Reptile extends Animal {
+}
+
+public class Dog extends Mammal {
+}
+```
+
+Como base nesse exemplo, temos:
+
+- Animal é a superclasse da classe Mammal.
+- Animal é a superclasse da classe Reptile.
+- Mamífero e Réptil são subclasses da classe Animal.
+- Cachorro é a subclasse das classes Mamíferos e Animais.
+
+Olhando o relacionamento IS-A, é verdadeiro afirmar:
+
+- Mamífero É-Um Animal
+- Réptil É-Um Animal
+- Cão é um mamífero
+- Portanto: Cachorro É-Um Animal também
+
+Usando `extends` as subclasses serão capazes de herdar todas as propriedades da superclasse, exceto as propriedades privadas da superclasse.
+
+A keyword `implements` é é usada para obter o relacionamento IS-A. Geralmente é usada com classes para herdar as propriedades de uma interface. As interfaces nunca podem ser estendidas por uma classe.
+
+```java
+public interface Animal {
+}
+
+public class Mammal implements Animal {
+}
+
+public class Dog extends Mammal {
+}
+```
+
+#### Instância
+
+O operador `instanceof` é usado para verificar se o mamífero é realmente um animal e se o cão é realmente um animal.
+
+```java
+interface Animal{}
+class Mammal implements Animal{}
+
+public class Dog extends Mammal {
+
+   public static void main(String args[]) {
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+}
+```
+
+#### Relação HAS-A
+
+Essas relações são baseadas principalmente no uso. Isso determina se uma certa classe HAS-A determinada coisa. Essa relação ajuda a reduzir a duplicação de código e também os bugs.
+
+```java
+public class Vehicle{}
+public class Speed{}
+
+public class Van extends Vehicle {
+   private Speed sp;
+}
+```
+
+Isso mostra que a classe Van HAS-A Speed. Por ter uma classe separada para Speed, não precisamos colocar todo o código pertencente a speed dentro da classe Van, o que torna possível reutilizar a classe Speed ​​em vários aplicativos.
+
+#### Tipos de Herança
+
+![Alt text](imgs/types_of_inheritance.jpg)
+
+Vale ressaltar que Java não oferece suporte a herança múltipla. Isso significa que uma classe não pode estender mais de uma classe. Portanto, é ilegal:
+
+```java
+public class extends Animal, Mammal{}
+```
+
+No entanto, uma classe pode implementar uma ou mais interfaces, o que ajudou o Java a se livrar da impossibilidade de herança múltipla.
+
+### Abstração
+
+É o processo de esconder certos detalhes e mostrar somente a informação essencial para o usuário, um processo de ocultar os detalhes de implementação do usuário, apenas a funcionalidade será fornecida ao usuário. Em outras palavras, o usuário terá as informações sobre o que o objeto faz ao invés de como o faz.
+
+Em Java, a abstração é obtida usando classes e interfaces abstratas.
+
+A keyword `abstract` é um modificador de não acesso, usado para classes e métodos:
+
+Classe abstrata: É uma classe restrita que não pode ser usada para criar objetos - para acessar, é preciso herdar de outra classe.
+
+- As classes abstratas podem ou não conter métodos abstratos , ou seja, métodos sem corpo (`public void get ();`)
+- Mas, se uma classe tem pelo menos um método abstrato, então a classe deve ser declarada abstrata.
+- Se uma classe for declarada abstrata, ela não pode ser instanciada.
+- Para usar uma classe abstrata, você deve herdá-la de outra classe, fornecer implementações para os métodos abstratos nela.
+- Se você herdar uma classe abstrata, terá que fornecer implementações para todos os métodos abstratos nela.
+
+Uma classe abstrata pode ter tanto métodos abstratos quanto regulares:
+
+```java
+abstract class Animal {
+  public abstract void animalSound();
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+```
+
+Não é possível criar um objeto da classe Animal:
+
+```java
+Animal myObj = new Animal(); // irá gerar um erro
+```
+
+Para acessar uma classe abstrata, deve ser herdada de outra. Convertendo fica:
+
+```java
+// Abstract class
+abstract class Animal {
+  // Abstract method (does not have a body)
+  public abstract void animalSound();
+  // Regular method
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+
+// Subclass (inherit from Animal)
+class Pig extends Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig(); // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+```
+
+Método abstrato: Só pode ser usado em classes abstratas e não tem um corpo. O corpo é provido pela subclasse (herdada).
+
+- A keyword `abstract` é usada para declarar o método como abstrato.-
+- É preciso colocar `abstract` antes do nome do método na declaração do método.
+- Um método abstrato contém uma assinatura de método, mas nenhum corpo de método.
+- Em vez de chaves, um método abstrato terá dois caracteres de ponto e vírgula (;) no final.
+
+```java
+public abstract class Employee {
+   private String name;
+   private String address;
+   private int number;
+   
+   public abstract double computePay();
+   // Remainder of class definition
+}
+```
+
+Declarar um método como abstrato tem 2 consequências:
+
+- A classe que o contém deve ser declarada como abstrata.
+- Qualquer classe que herde a classe atual deve substituir o método abstrato ou declarar-se como abstrata.
+
+Eventualmente, uma classe descendente tem que implementar o método abstrato; caso contrário, se tem uma hierarquia de classes abstratas que não podem ser instanciadas.
+
+Se a classe Salary herda a classe Employee, então ela deve implementar o `computePay()` método como abaixo:
+
+```java
+* File name : Salary.java */
+public class Salary extends Employee {
+   private double salary;   // Annual salary
+  
+   public double computePay() {
+      System.out.println("Computing salary pay for " + getName());
+      return salary/52;
+   }
+   // Remainder of class definition
+}
+```
+
+A abstração é usada para atingir um maior nível de segurança - esconder certos detalhes e somente mostrar o que importa do objeto.
+
+### Interface
+
+Quando duas (ou mais) classes possuem comportamentos comuns que podem ser separados em uma outra classe, dizemos que a "classe comum" é uma interface, que pode ser "herdada" pelas outras classes. Note que colocamos a interface como "classe comum", que pode ser "herdada" (com aspas), porque uma interface não é exatamente um classe, mas sim um conjunto de métodos que todas as classes que herdarem dela devem possuir (implementar) - portanto, uma interface não é "herdada" por uma classe, mas sim implementada. 
+
+No mundo do desenvolvimento de software, dizemos que uma interface é um "contrato": uma classe que implementa uma interface deve fornecer uma implementação a todos os métodos que a interface define, e em compensação, a classe implementadora pode dizer que ela é do tipo da interface.
+
+Um pequeno detalhe: uma interface não pode ser herdada por uma classe, mas sim implementada. No entanto, uma interface pode herdar de outra interface, criando uma hierarquia de interfaces. 
+
+```java
+public interface Automovel {
+    void acelerar();
+    void frear();
+    void acenderFarol();
+}
+
+public class Carro implements Automovel {
+
+    /* ... */
+
+    @Override
+    public void acelerar() {
+        this.mecanismoAceleracao.acelerar();
+    }
+
+    @Override
+    public void frear() {
+        /* código do carro para frear */
+    }
+
+    @Override
+    public void acenderFarol() {
+        /* código do carro para acender o farol */
+    }
+
+    /* ... */
+}
+
+public class Moto implements Automovel {
+
+    /* ... */
+
+    @Override
+    public void acelerar() {
+        /* código específico da moto para acelerar */
+    }
+
+    @Override
+    public void frear() {
+        /* código específico da moto para frear */
+    }
+
+    @Override
+    public void acenderFarol() {
+        /* código específico da moto para acender o farol */
+    }
+
+    /* ... */
+}
+```
+
+Interfaces são outro modo de atingir abstração, interface é uma "classe completamente abstrata" que agrupa métodos relacionados com corpos vazios:
+
+```java
+// interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void run(); // interface method (does not have a body)
+}
+```
+
+Para acessar os métodos da interface, ela deve ser implementada por outra classe com a keyword `implements` (no lugar de `extends`). O corpo do método da interface é provido pela classe implementada:
+
+```java
+// Interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void sleep(); // interface method (does not have a body)
+}
+
+// Pig "implements" the Animal interface
+class Pig implements Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println("The pig says: wee wee");
+  }
+  public void sleep() {
+    // The body of sleep() is provided here
+    System.out.println("Zzz");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig();  // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+```
+
+Ao substituir métodos definidos em interfaces, existem várias regras a serem seguidas:
+
+- As exceções verificadas não devem ser declaradas em métodos de implementação diferentes daqueles declarados pelo método de interface ou subclasses daqueles declarados pelo método de interface.
+- A assinatura do método de interface e o mesmo tipo de retorno ou subtipo devem ser mantidos ao substituir os métodos.
+- Uma classe de implementação em si pode ser abstrata e, nesse caso, os métodos de interface não precisam ser implementados.
+
+Quando interfaces de implementação, existem várias regras:
+
+- Uma classe pode implementar mais de uma interface por vez.
+- Uma classe pode estender apenas uma classe, mas implementar muitas interfaces.
+- Uma interface pode estender outra interface, da mesma forma que uma classe pode estender outra classe.
+
+#### Estendendo Interfaces
+
+Uma interface pode estender outra interface da mesma maneira que uma classe pode estender outra classe. A interface filha herda os métodos da interface pai.
+
+```java
+// Filename: Sports.java
+public interface Sports {
+   public void setHomeTeam(String name);
+   public void setVisitingTeam(String name);
+}
+
+// Filename: Football.java
+public interface Football extends Sports {
+   public void homeTeamScored(int points);
+   public void visitingTeamScored(int points);
+   public void endOfQuarter(int quarter);
+}
+
+// Filename: Hockey.java
+public interface Hockey extends Sports {
+   public void homeGoalScored();
+   public void visitingGoalScored();
+   public void endOfPeriod(int period);
+   public void overtimePeriod(int ot);
+}
+```
+
+A interface Hockey tem quatro métodos, mas herda dois de Sports; portanto, uma classe que implementa Hockey precisa implementar todos os seis métodos. Da mesma forma, uma classe que implementa Futebol precisa definir os três métodos de Futebol e os dois métodos de Esportes.
+
+Uma classe Java pode estender apenas uma classe pai. A herança múltipla não é permitida. As interfaces não são classes, entretanto, e uma interface pode estender mais de uma interface pai.
+
+```java
+public interface Hockey extends Sports, Event
+```
+
+#### Interfaces de Marcação
+
+O uso mais comum de extensões de interfaces ocorre quando a interface pai não contém nenhum método.
+
+```java
+package java.util;
+public interface EventListener
+{}
+```
+
+Uma interface sem métodos é chamada de tagging interface. Existem dois objetivos básicos de design de interfaces de marcação:
+
+- Criar um pai em comum → uma interface de marcação para criar um pai comum entre um grupo de interfaces
+- Adiciona um data-type para uma classe → Uma classe que implementa uma interface de marcação não precisa definir nenhum método (já que a interface não tem nenhum), mas a classe se torna um tipo de interface por meio de polimorfismo *(é dessa situação que vem o termo marcação)*
+
+#### Notas Sobre Interfaces
+
+- Como classes abstratas, interfaces não podem ser usadas para criar objetos
+- Métodos de interface não tem corpo - o corpo é provido pela classe "implementada"
+- Na implementação de uma interface, todos os seus métodos devem ser override
+- Métodos de interface são por padrão `abstract` e `public`
+- Atributos de interface são por padrão `public`, `static` e `final`
+- Uma interface não pode conter um construtor (já que não pode criar objetos)
+- Não pode ser instanciada
+- Todos os métodos em uma interface são abstratos
+- Uma interface não pode conter campos de instância. Os únicos campos que podem aparecer em uma interface devem ser declarados estáticos e finais
+- Uma interface não é estendida por uma classe; é implementado por uma classe
+- Uma interface pode estender várias interfaces
+
+#### Por Que e Quando Usar?
+
+- Para alcançar segurança: esconder certos detalhes e só mostrar detalhes importantes de um objeto (interface)
+- Java não suporta "heranças múltiplas" (uma classe só pode herdar de uma superclasse). Contudo, uma classe pode implementar múltiplas interfaces
+
+```java
+interface FirstInterface {
+  public void myMethod(); // interface method
+}
+
+interface SecondInterface {
+  public void myOtherMethod(); // interface method
+}
+
+class DemoClass implements FirstInterface, SecondInterface {
+  public void myMethod() {
+    System.out.println("Some text..");
+  }
+  public void myOtherMethod() {
+    System.out.println("Some other text...");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    DemoClass myObj = new DemoClass();
+    myObj.myMethod();
+    myObj.myOtherMethod();
+  }
+}
+```
+
+### Polimorfismo
+
+Quando dois ou mais objetos, de classes diferentes, têm o mesmo método que é implementado de formas diferentes, ou seja, um método possui várias formas, várias implementações distintas em diferentes classes, mas que possuem o mesmo efeito é considerado polimorfismo. Ocorre quando múltiplas classes estão relacionadas via herança.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Automovel moto = new Moto("Yamaha XPTO-100", new MecanismoDeAceleracaoDeMotos())
+        Automovel carro = new Carro("Honda Fit", new MecanismoDeAceleracaoDeCarros())
+        List<Automovel> listaAutomoveis = Arrays.asList(moto, carro);
+        for (Automovel automovel : listaAutomoveis) {
+            automovel.acelerar();
+            automovel.acenderFarol();
+        }
+    }
+}
+```
+
+A herança permite herdar atributos e métodos de outra classe. O polimorfismo usa esses métodos para performar diferentes tarefas. Isso permite executar uma única ação em formas diferentes.
+
+O uso mais comum de polimorfismo em POO ocorre quando uma referência de classe pai é usada para se referir a um objeto de classe filho. Qualquer objeto que pode passar em mais de um teste IS-A é considerado polimórfico. Em Java, todos os objetos Java são polimórficos, pois qualquer objeto passará no teste IS-A para seu próprio tipo e para a classe Object.
+
+A única forma possível de acessar um objeto é por meio de uma variável de referência e ela pode ser de apenas um tipo. Uma vez declarado, o tipo de uma variável de referência não pode ser alterado. Ela pode ser reatribuída a outros objetos, desde que não seja declarada final. O tipo da variável de referência determinaria os métodos que ela pode invocar no objeto.
+
+Uma variável de referência pode se referir a qualquer objeto de seu tipo declarado ou qualquer subtipo de seu tipo declarado. Ela pode ser declarada como uma classe ou tipo de interface.
+
+```java
+public interface Vegetarian{}
+public class Animal{}
+public class Deer extends Animal implements Vegetarian{}
+```
+
+A classe `Deer` é considerada polimórfica, pois possui herança múltipla. A seguir são verdadeiros para os exemplos acima:
+
+- Um cervo é um animal
+- A Deer IS-A Vegetarian
+- A Deer IS-A Deer
+- Um cervo é um objeto
+
+```java
+Deer d = new Deer();
+Animal a = d;
+Vegetarian v = d;
+Object o = d;
+
+// Todas as variáveis ​​de referência d, a, v, o referem-se ao mesmo objeto Deer na pilha.
+```
+
+### Substituição
+
+Se uma classe herda um método de sua superclasse, há uma chance de sobrescrever o método, desde que ele não seja marcado como final. O benefício da substituição é: capacidade de definir um comportamento específico para o tipo de subclasse, o que significa que uma subclasse pode implementar um método de classe pai com base em seus requisitos.
+
+No entendimento da orientação de objetos: substituir significa substituir a funcionalidade de um método existente.
+
+```java
+class Animal {
+   public void move() {
+      System.out.println("Animals can move");
+   }
+}
+
+class Dog extends Animal {
+   public void move() {
+      System.out.println("Dogs can walk and run");
+   }
+}
+
+public class TestDog {
+
+   public static void main(String args[]) {
+      Animal a = new Animal();   // Animal reference and object
+      Animal b = new Dog();   // Animal reference but Dog object
+
+      a.move();   // runs the method in Animal class
+      b.move();   // runs the method in Dog class
+   }
+}
+```
+
+Em tempo de compilação, a verificação é feita no tipo de referência. No entanto, no tempo de execução, a JVM descobre o tipo de objeto e executa o método que pertence a esse objeto específico.
+
+```
+Animals can move
+Dogs can walk and run
+```
+
+Portanto, no exemplo acima, o programa irá compilar corretamente, uma vez que a classe Animal possui o método move. Então, em tempo de execução, ele executa o método específico para aquele objeto.
+
+Ao invocar uma versão da superclasse de um método sobrescrito, o `super` é usada.
+
+```java
+class Animal {
+   public void move() {
+      System.out.println("Animals can move");
+   }
+}
+
+class Dog extends Animal {
+   public void move() {
+      super.move();   // invokes the super class method
+      System.out.println("Dogs can walk and run");
+   }
+}
+
+public class TestDog {
+
+   public static void main(String args[]) {
+      Animal b = new Dog();   // Animal reference but Dog object
+      b.move();   // runs the method in Dog class
+   }
+}
+```
+
+```
+Animals can move
+Dogs can walk and run
+```
+
+#### Regras para Substituição de Métodos
+
+- A lista de argumentos deve ser exatamente a mesma do método sobrescrito.
+- O tipo de retorno deve ser o mesmo ou um subtipo do tipo de retorno declarado no método original sobrescrito na superclasse.
+- O nível de acesso não pode ser mais restritivo do que o nível de acesso do método substituído.
+  - Por exemplo: Se o método da superclasse for declarado público, o método de substituição na subclasse não pode ser privado ou protegido
+- Os métodos de instância podem ser substituídos apenas se forem herdados pela subclasse.
+- Um método declarado final não pode ser substituído.
+- Um método declarado como estático não pode ser substituído, mas pode ser declarado novamente.
+- Se um método não pode ser herdado, ele não pode ser substituído.
+- Uma subclasse dentro do mesmo pacote que a superclasse da instância pode substituir qualquer método da superclasse que não seja declarado privado ou final.
+- Uma subclasse em um pacote diferente só pode substituir os métodos não finais declarados públicos ou protegidos.
+- Um método de substituição pode lançar quaisquer exceções desmarcadas, independentemente de o método substituído lançar exceções ou não. No entanto, o método de substituição não deve lançar exceções verificadas que são novas ou mais amplas do que as declaradas pelo método de substituição. O método de substituição pode lançar exceções mais restritas ou menos do que o método substituído.
+- Construtores não podem ser substituídos.
+
+### Pacotes
+
+Um pacote é usado para agrupar tipos relacionadas (classes, interfaces, enumerações e anotações), pense como uam pasta em um diretório. Eles são usados para evitar conflitos de nome e melhor manutenção do código. São divididos em 2 categorias:
+
+- Built-in Packages (pacotes de Java API)
+- User-defined Packages (pacotes do usuário)
+
+O Java API é uma biblioteca de de classes pré-escritas, todas gratuitas, incluídas no Java Development Environment.
+
+A biblioteca contem componentes para a manutenção de input, programação database, e muito mais. A lista completa pode ser encontrada no site da Oracle: https://docs.oracle.com/javase/8/docs/api/. A biblioteca é dividida em pacotes e classes, sendo assim, se pode importar uma única classe (junto de seus métodos e atributos), ou um pacote inteiro que contem todas as classes que pertencem aquela classe específica. 
+
+Para usar uma classe ou um pacote de uma biblioteca, é necessário usar a keyword `import`:
+
+```java
+import package.name.Class;   // Import a single class
+import package.name.*;   // Import the whole package
+```
+
+Importando uma classe:
+
+```java
+import java.util.Scanner;
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();
+    System.out.println("Username is: " + userName);
+  }
+}
+```
+
+Importando um pacote:
+
+```java
+import java.util.*;
+```
+
+#### Criando um Pacote
+
+Para criar um pacote é preciso entender que o Java usa um sistema de diretório de arquivos para 
+
+```
+└── root
+  └── mypack
+    └── MyPackageClass.java
+```
+
+Para criar um pacote é necessário usar a keyword `package`:
+
+```java
+package mypack;
+class MyPackageClass {
+  public static void main(String[] args) {
+    System.out.println("This is my package!");
+  }
+}
+```
+
+Então salvar o arquivo e compila-lo:
+
+```
+C:\Users\Your Name>javac MyPackageClass.java
+```
+
+Para, por fim, compilar o pacote:
+
+```
+C:\Users\Your Name>javac -d . MyPackageClass.java
+```
+
+### Design Patters e SOLID
+
+Alguns problemas aparecem com tanta frequência em OOP que suas soluções se tornaram padrões de design de sistemas e modelagem de código orientado a objeto. Esses padrões de projeto, (ou design patterns) nada mais são do que formas padronizadas de resolver problemas comuns em linguagens orientadas a objetos. O livro "Design Patterns", conhecido como Gof:Gang of Four, é a principal referência nesse assunto, contendo os principais padrões usados em grandes projetos.
+
+Em projetos desenvolvidos com oop, assim como em qualquer outro, o código pode se tornar desorganizado e difícil de manter a médio e longo prazo. Pra manter o clean code, é necessário implementar boas práticas de programação, como por exemplo: KISS (_Keep It Simple, Stupid_, "Mantenha as coisas simples") e DRY (_Don't Repeat Yourself_, "Não se repita").
+
+## Métodos
+
+Um método é um bloco de código que é somente executado quando chamado, são usados para performar certas ações e também são conhecidos como funções. Um método pode receber dados como parâmetros.
+
+```java
+public class Main {
+  static void myMethod() {
+    // code to be executed
+  }
+}
+```
+
+Deve ser declarado dentro de uma classe e é definido com o nome do método seguido de parênteses "( )". Java possui alguns métodos pré-definidos, como `System.out.println()`, mas novos métodos podem ser criados.
+
+Para sua criação é necessário seguir a seguinte sintaxe:
+
+```java
+modifier returnType nameOfMethod (Parameter List) {
+   // method body
+}
+
+/* */
+
+public static int methodName(int a, int b) {
+   // body
+}
+```
+
+- `modifier` → Define o tipo de acesso do método (opcional).
+- `returnType` → Define o tipo de retorno, se retorna ou não um valor.
+- `nameOfMethod` → O nome do método.
+- `parameterList` → A lista de parâmetros, é o tipo, ordem e número de parâmetros de um método (opcional).
+- `methodBody` → O corpo do método é o código/instruções que definem sua ação.
+
+Para ser usado, o método deve ser chamado. Existem 2 maneiras de chamar um método, ou seja, ele retorna um valor ou retorna nenhum valor. A forma de chama-los é muito simples: basta escrever seu nome, seguido dos parênteses "( )" e ponto e vírgula ";". O processo dessa chamada também é simples. Quando um programa invoca um método, o controle do programa é transferido para o método. Este método chamado então retorna o controle ao chamador em duas condições, quando -
+
+- a instrução de retorno é executada.
+- atinge o método que termina com a chave de fechamento.
+
+```java
+public class Main {
+  static void myMethod() {
+    System.out.println("I just got executed!");
+  }
+
+  public static void main(String[] args) {
+    myMethod();
+  }
+}
+
+// Outputs "I just got executed!"
+```
+
+Um método também pode ser executado múltiplas vezes.
+
+```java
+public class Main {
+  static void myMethod() {
+    System.out.println("I just got executed!");
+  }
+
+  public static void main(String[] args) {
+    myMethod();
+    myMethod();
+    myMethod();
+  }
+}
+
+// I just got executed!
+// I just got executed!
+// I just got executed!
+```
+
+### Parâmetros e Argumentos
+
+Dados podem ser passados para o método como parâmetros, estes agem como variáveis dentro do método. São especificados após o nome do método, dentro dos parênteses, e um método pode receber quantos parâmetros for necessário, é só separa-los por vírgula. Os parâmetros podem ser passados ​​por valor ou por referência.
+
+```java
+public class Main {
+  static void myMethod(String fname, int age) {
+    System.out.println(fname + " is " + age);
+  }
+
+  public static void main(String[] args) {
+    myMethod("Liam", 5);
+    myMethod("Jenny", 8);
+    myMethod("Anja", 31);
+  }
+}
+
+// Liam is 5
+// Jenny is 8
+// Anja is 31
+```
+
+Ao ser chamado, um método com parâmetros precisa ter um valor repassado para os seus parâmetros, este valor é chamado de argumento. Múltiplos parâmetros necessitam de múltiplos argumentos (eles funcionam em pares, um parâmetro nunca pode ficar sozinho) e os argumentos devem ser passados na mesma ordem do seu par.
+
+### Valores de Retorno
+
+A keyword `void` indica que um método não deve retornar um valor, a chamada desse tipo de método deve ser uma instrução.
+
+```java
+public class ExampleVoid {
+
+   public static void main(String[] args) {
+      methodRankPoints(255.7);
+   }
+
+   public static void methodRankPoints(double points) {
+      if (points >= 202.5) {
+         System.out.println("Rank:A1");
+      }else if (points >= 122.4) {
+         System.out.println("Rank:A2");
+      }else {
+         System.out.println("Rank:A3");
+      }
+   }
+}
+
+/* Output */
+// Rank:A1
+```
+
+```java
+public class Main {
+
+  // Create a checkAge() method with an integer variable called age
+  static void checkAge(int age) {
+
+    // If age is less than 18, print "access denied"
+    if (age < 18) {
+      System.out.println("Access denied - You are not old enough!");
+
+    // If age is greater than, or equal to, 18, print "access granted"
+    } else {
+      System.out.println("Access granted - You are old enough!");
+    }
+
+  }
+
+  public static void main(String[] args) {
+    checkAge(20); // Call the checkAge method and pass along an age of 20
+  }
+}
+
+// Outputs "Access granted - You are old enough!"
+```
+
+Para que o método retorne um valor é preciso indicar usando um data-type e a keyword `return` dentro do método.
+
+```java
+public class Main {
+  static int myMethod(int x, int y) {
+    return x + y;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(myMethod(5, 3));
+  }
+}
+// Outputs 8 (5 + 3)
+```
+
+É possível, e recomendado, armazenar o valor retornado.
+
+```java
+public class Main {
+  static int myMethod(int x, int y) {
+    return x + y;
+  }
+
+  public static void main(String[] args) {
+    int z = myMethod(5, 3);
+    System.out.println(z);
+  }
+}
+// Outputs 8 (5 + 3)
+```
+
+### Sobrecarga de um Método
+
+Quando se tem em uma classe 2 os mais métodos com o mesmo nome, mas que possuem número ou parâmetros diferentes, temos uma sobrecarga de método. É diferente de substituir, pois na substituição, um método tem o mesmo nome de método, tipo, número de parâmetros, etc.
+
+```java
+int myMethod(int x)
+float myMethod(float x)
+double myMethod(double x, double y)
+```
+
+Ao invés de declarar múltiplos métodos que fazem essencialmente a mesma coisa, é melhor sobrecarregar. Isso torna o programa mais legível.
+
+```java
+static int plusMethod(int x, int y) {
+  return x + y;
+}
+
+static double plusMethod(double x, double y) {
+  return x + y;
+}
+
+public static void main(String[] args) {
+  int myNum1 = plusMethod(8, 5);
+  double myNum2 = plusMethod(4.3, 6.26);
+  System.out.println("int: " + myNum1);
+  System.out.println("double: " + myNum2);
+}
+```
+
+### Escopo
+
+Em Java, as variáveis são somente acessíveis dentro de onde foram criadas. 
+
+Escopo de um método: variáveis declaradas diretamente dentro de um método ficam disponíveis em qualquer lugar dentro deste método seguido da linha de código onde elas foram declaradas.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+
+    // Code here CANNOT use x
+
+    int x = 100;
+
+    // Code here can use x
+    System.out.println(x);
+  }
+}
+```
+
+Escopo de um bloco: um bloco de código se refere a todo o código envolvido entre chaves "{ }". Variáveis declaradas dentro deste escopo só ficam disponíveis dentro dele, seguindo a linha em que foram declaradas.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+
+    // Code here CANNOT use x
+
+    { // This is a block
+
+      // Code here CANNOT use x
+
+      int x = 100;
+
+      // Code here CAN use x
+      System.out.println(x);
+
+    } // The block ends here
+
+  // Code here CANNOT use x
+
+  }
+}
+```
+
+Um bloco de código pode existir por si só ou pertencer a uma declaração `if`, `while` ou `for`. No caso de declarações `for`, as variáveis declaradas dentro da mesma também podem ser acessadas dentro do escopo do bloco.
+
+### Recursão
+
+É a técnica onde uma função chama a si mesma. Isso é funcional quando se quer quebrar um problema complicado em casos menores e mais simples que são mais fácies de resolver.
+
+Se o problema é pequeno:
+
+- Não resolva o problema diretamente
+
+Senão:
+
+- Reduza o problema em um problema menor, chame novamente o método para o problema menor e volte ao problema original.
+
+A chamada ao método recursivo é igual a uma chamada de método normal, quando a execução do método terminar ele deve voltar para o mesmo método, só preste atenção, pois o estado do método pode ser diferente para cada vez que ele se chama. Os valores das variáveis passadas por parâmetro podem ser diferentes para cada vez que o método se chama.
+
+Antes de começar a escrever o código um método recursivo, precisamos pensar qual condição será interrompida a chamada recursiva, ou seja, quando o método precisa parar de se chamar. Depois precisamos pensar no objetivo.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    int result = sum(10);
+    System.out.println(result);
+  }
+  public static int sum(int k) {
+    if (k > 0) {
+      return k + sum(k - 1);
+    } else {
+      return 0;
+    }
+  }
+}
+```
+
+```
+10 + sum(9)
+10 + ( 9 + sum(8) )
+10 + ( 9 + ( 8 + sum(7) ) )
+...
+10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 + sum(0)
+10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 + 0
+```
+
+#### Condição de Parada
+
+Do mesmo modo em que um loop pode chegar em um problema de loop infinito, uma função recursiva pode atingir o problema de recursão infinita. Recursão infinita é quando a função não consegue parar de se chamar. Toda função deve ter uma condição de parada, que é a condição onde a função para de se chamar.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    int result = sum(5, 10);
+    System.out.println(result);
+  }
+  public static int sum(int start, int end) {
+    if (end > start) {
+      return end + sum(start, end - 1);
+    } else {
+      return end;
+    }
+  }
+}
+```
+
+É necessário ter cuidado com o uso dessas funções, pois é fácil cair em um problema de recursão infinita, ou uma que usa a memória ou processador em excesso. Contudo, se escrito de forma correta pode ser muito eficiente e matematicamente elegante.
+
+### This
+
+É uma keyword usada como referência ao objeto da classe atual, com um método de instância ou um construtor. Usando `this` pode-se referir os membros de uma classe, como construtores, variáveis ​​e métodos.
+
+![Alt text](imgs/this.jpg)
+
+- Diferenciar as variáveis ​​de instância das variáveis ​​locais se elas tiverem os mesmos nomes, dentro de um construtor ou método.
+
+```java
+class Student {
+   int age;   
+   Student(int age) {
+      this.age = age;	
+   }
+}
+```
+
+- Chamar um tipo de construtor (construtor parametrizado ou padrão) de outro em uma classe. É conhecido como invocação explícita do construtor.
+
+```java
+class Student {
+   int age
+   Student() {
+      this(20);
+   }
+   
+   Student(int age) {
+      this.age = age;	
+   }
+}
+```
+
+### Var-Args
+
+Permite que seja passado um número variável de argumentos do mesmo tipo para um método. O parâmetro no método é declarado da seguinte maneira:
+
+```
+typeName... parameterName
+```
+
+Apenas um parâmetro de comprimento variável pode ser especificado em um método e este parâmetro deve ser o último parâmetro. Todos os parâmetros regulares devem precedê-lo.
+
+```java
+public class VarargsDemo {
+
+   public static void main(String args[]) {
+      // Call method with variable args  
+	   printMax(34, 3, 3, 2, 56.5);
+      printMax(new double[]{1, 2, 3});
+   }
+
+   public static void printMax( double... numbers) {
+      if (numbers.length == 0) {
+         System.out.println("No argument passed");
+         return;
+      }
+
+      double result = numbers[0];
+
+      for (int i = 1; i <  numbers.length; i++)
+      if (numbers[i] >  result)
+      result = numbers[i];
+      System.out.println("The max value is " + result);
+   }
+}
+
+/* Output */
+// The max value is 56.5
+// The max value is 3.0
+```
+
+### Finalize()
+
+É possível definir um método que será chamado pouco antes da destruição final de um objeto pelo coletor de lixo. Ele pode ser usado para garantir que um objeto seja encerrado de forma limpa. Por exemplo, para garantir que um arquivo aberto pertencente a esse objeto seja fechado.
+
+Para adicionar um finalizador a uma classe, é só definir o método `finalize()`. O Java runtime chama esse método sempre que está prestes a reciclar um objeto dessa classe.
+
+Dentro dele, é preciso especificar as ações que devem ser executadas antes que um objeto seja destruído.
+
+```java
+protected void finalize( ) {
+  // finalization code here
+}
+```
+`protected` é um especificador que impede o acesso ao método por um código definido fora de sua classe.
+
+Isso significa que não se pode saber quando ou mesmo se `finalize()` será executado. Por exemplo, se seu programa termina antes de ocorrer a coleta de lixo, ele não será executado.
