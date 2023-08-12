@@ -1,7 +1,7 @@
-package formacao_java.projetos.curso2;
+package formacao_java.projetos.curso3;
 
 // código fonte, blueprint para contas
-public class Conta { // tipo Conta
+public abstract class Conta { // tipo Conta
 // atributos do tipo Conta
     private double saldo;
     private int agencia;

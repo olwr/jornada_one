@@ -14,6 +14,7 @@
     - [Objetos](#objetos)
     - [Construtores](#construtores)
       - [Reaproveitamento](#reaproveitamento)
+    - [Construtores em Herança](#construtores-em-herança)
   - [Modificadores](#modificadores)
     - [Referências](#referências)
   - [Variáveis](#variáveis)
@@ -22,7 +23,7 @@
     - [Variáveis Locais](#variáveis-locais)
     - [Variáveis de Instância/Não Estáticas](#variáveis-de-instâncianão-estáticas)
     - [Variáveis de Classe/Estáticas](#variáveis-de-classeestáticas)
-    - [Enums](#enums)
+  - [Enums](#enums)
   - [Operadores](#operadores)
     - [Aritméticos](#aritméticos)
     - [Atribuição](#atribuição)
@@ -44,6 +45,7 @@
       - [Instância](#instância)
       - [Relação HAS-A](#relação-has-a)
       - [Tipos de Herança](#tipos-de-herança)
+        - [Curiosidade: Herança em Outras Linguagens](#curiosidade-herança-em-outras-linguagens)
     - [Abstração](#abstração)
     - [Interface](#interface)
       - [Estendendo Interfaces](#estendendo-interfaces)
@@ -59,13 +61,19 @@
   - [Métodos](#métodos)
     - [Parâmetros e Argumentos](#parâmetros-e-argumentos)
     - [Valores de Retorno](#valores-de-retorno)
-    - [Sobrecarga de um Método](#sobrecarga-de-um-método)
+    - [Sobrecarga e Reescrita de um Método](#sobrecarga-e-reescrita-de-um-método)
     - [Escopo](#escopo)
     - [Recursão](#recursão)
       - [Condição de Parada](#condição-de-parada)
     - [This](#this)
     - [Var-Args](#var-args)
     - [Finalize()](#finalize)
+  - [Anotações e Reflexão](#anotações-e-reflexão)
+    - [Formatação Básica](#formatação-básica)
+    - [Declaração e Tipos de Anotações](#declaração-e-tipos-de-anotações)
+    - [Tipos Pré-Definidos](#tipos-pré-definidos)
+      - [Usados pelo Java](#usados-pelo-java)
+    - [Aplicadas em Outras](#aplicadas-em-outras)
 
 ## O que é Java?
 
@@ -442,7 +450,11 @@ Uma classe pode ter vários métodos para acessar o valor de vários tipos de m�
 
 Eles têm estados e comportamentos. Um objeto é uma instância de uma classe, ou seja, a classe é um template/blueprint na qual os objetos são criados. Então, um objeto é a instância (resultado) de uma classe. Sua criação envolve a alocação de memória para esse objeto.
 
+![Alt text](imgs/concepts-object.gif)
+
 Um exemplo: Um gato tem estados - cor, nome, raça; e também comportamento - miar, comer, espreitar. Ao comparar os objetos de software com objetos reais, pode se observar muitas semelhanças. Eles também possuem um estado e um comportamento - o estado de um objeto de software é armazenado em campos e o comportamento é mostrado por meio de métodos.
+
+![Alt text](imgs/concepts-bicycleObject.gif)
 
 Um objeto tem 3 características:
 
@@ -564,6 +576,34 @@ public class ConsDemo {
       MyClass t2 = new MyClass( 20 );
       System.out.println(t1.x + " " + t2.x); // 10 9
    }
+}
+```
+
+### Construtores em Herança
+
+Construtores não são herdados, eles pertencem somente a sua própria classe. Por esta razão, é necessário que toda a subclasse tenha seu construtor escrito de for explícita.
+
+Porém, mesmo depois de criado, o Java continua chamando o construtor padrão da superclasse.
+
+```java
+public class ContaCorrente extends Conta {
+
+  public ContaCorrente() {
+    super();
+  }
+}
+```
+
+O `super` significa que subimos na hierarquia, para chamar um método ou atributo da classe mãe. Se há um construtor padrão (sem parâmetros) nessa superclasse, o construtor da classe filha funcionará normalmente.
+
+Para construtores específicos (com parâmetros) a sintaxe muda um pouquinho:
+
+```java
+public class ContaCorrente extends Conta {
+
+  public ContaCorrente(int agencia, int numero) {
+    super(agencia, numero);
+  }
 }
 ```
 
@@ -879,7 +919,8 @@ public class Employee {
 ```
 > Se as variáveis ​​forem acessadas de uma classe externa, a constante deve ser acessada como Employee.DEPARTMENT
 
-### Enums
+## Enums
+
 Restringem uma variável para ter apenas alguns valores predefinidos. Com o uso de enums, é possível reduzir o número de bugs no código.
 
 ```java
@@ -898,7 +939,47 @@ public class FreshJuiceTest {
 }
 ```
 
->  Enums podem ser declarados como próprios ou dentro de uma classe. Métodos, variáveis ​​e construtores também podem ser definidos dentro de enums.
+Enums podem ser declarados como próprios ou dentro de uma classe. Métodos, variáveis ​​e construtores também podem ser definidos dentro de enums.
+
+
+```java
+// enum próprio
+public enum Prioridade {
+  MIN, MAX, NORMAL;
+}
+
+// dentro de uma classe
+public class Sistema {
+  enum Prioridade{MIN, MAX, NORMAL};
+}
+```
+
+```java
+// enum com métodos e construtor
+public enum Prioridade {
+  MIN(1), NORMAL(5), MAX(10);
+
+  private int valor;
+
+  Prioridade(int valor) {
+    this.valor = valor;
+  }
+
+  public int getValor() {
+    return this.valor;
+  }
+}
+```
+
+> Enumerações não podem ser instanciadas. É como uma classe com construtores privados
+
+```java
+// vai gerar um erro
+Prioridade pMin = new Prioridade();
+
+// forma correta
+Prioridade pMin = Prioridade.MIN;
+```
 
 ## Operadores
 
@@ -1512,6 +1593,8 @@ No Java, é possível herdar atributos e métodos de uma classe para outra. O co
 - **Subclasse (filho) →** classe que herda de outra classe
 - **Superclasse (pai) →** classe que é herdada
 
+![Alt text](imgs/concepts-bikeHierarchy.gif)
+
 Para que ocorra a herança, é preciso usar a keyword `extends`.
 
 ```java
@@ -1672,6 +1755,80 @@ public class Van extends Vehicle {
 
 Isso mostra que a classe Van HAS-A Speed. Por ter uma classe separada para Speed, não precisamos colocar todo o código pertencente a speed dentro da classe Van, o que torna possível reutilizar a classe Speed ​​em vários aplicativos.
 
+Composição é uma maneira de implementar a relação "has-a". A relação de composição de 2 objetos é possível quando um objeto contem o outro, e aquele objeto depende completamente disso.
+
+O objeto contido não deve existir sem a existência do objeto pai.
+
+![Alt text](imgs/composition-in-java.png)
+
+Pontos Principais:
+
+- Representa uma relação part-of.
+- As duas entidades estão relacionadas uma a outra.
+- Favorece composição sobre herança.
+- A relação entre objetos acontece quando um objeto contem um objeto composto, e esse objeto não pode existir sem o outro. Se o que contem é deletado, todos os contidos devem ser deletados também.
+
+```java
+import java.io.*;   
+import java.util.*;   
+// class College  
+class College {   
+    public String name;   
+    public String address;   
+    College(String name, String address)   
+    {   
+        this.name = name;   
+        this.address = address;   
+    }   
+}   
+// University has more than one college.   
+class University {   
+    // reference to refer to list of college.   
+    private final List<College> colleges;   
+    University(List<College> colleges)  
+    {  
+        this.colleges = colleges;  
+    }   
+    // Getting total number of colleges  
+    public List<College> getTotalCollegesInUniversity()   
+    {   
+        return colleges;   
+    }   
+}   
+class CompositionExample {   
+    public static void main(String[] args)   
+    {   
+        // Creating the Objects of College class.   
+        College c1   
+            = new College("ABES Engineering College", "Ghaziabad");   
+        College c2   
+            = new College("AKG Engineering College", "Ghaziabad");   
+        College c3 = new College("ACN College of Engineering & Management Sudies",   
+                           "Aligarh");   
+        // Creating list which contains the no. of colleges.   
+        List<College> college = new ArrayList<College>();   
+        college.add(c1);   
+        college.add(c2);   
+        college.add(c3);   
+        University university = new University(college);   
+        List<College> colleges = university.getTotalCollegesInUniversity();   
+        for (College cg : colleges) {   
+            System.out.println("Name : " + cg.name   
+                               + " and "  
+                               + " Address : " + cg.address);   
+        }   
+    }   
+}  
+```
+
+Benefícios:
+
+- Permite a reutilização de código.
+- Em Java, "herança múltipla" pode sr alçada com o conceito de composição.
+- Provê melhor test-ability de uma classe. 
+- Permite facilmente substituir a implementação da classe composta com a versão melhorada.
+- Permite alterar dinamicamente o comportamento do programa trocando os objetos membros no runtime.
+
 #### Tipos de Herança
 
 ![Alt text](imgs/types_of_inheritance.jpg)
@@ -1683,6 +1840,25 @@ public class extends Animal, Mammal{}
 ```
 
 No entanto, uma classe pode implementar uma ou mais interfaces, o que ajudou o Java a se livrar da impossibilidade de herança múltipla.
+
+![Alt text](imgs/heran%C3%A7a.png)
+
+##### Curiosidade: Herança em Outras Linguagens
+
+```python
+# python
+class Carro(Veiculo)
+```
+
+```ruby
+# ruby
+class Carro < Veiculo
+```
+
+```csharp
+// c#
+class Carro : Veiculo {}
+```
 
 ### Abstração
 
@@ -1747,7 +1923,7 @@ class Main {
 }
 ```
 
-Método abstrato: Só pode ser usado em classes abstratas e não tem um corpo. O corpo é provido pela subclasse (herdada).
+Método abstrato: Só pode ser usado em classes abstratas e não tem um corpo. O corpo é provido pela subclasse (herdada). Ou seja, não possuem corpo (implementação), apenas definem a assinatura (visibilidade, retorno, nome do método e parâmetros).
 
 - A keyword `abstract` é usada para declarar o método como abstrato.-
 - É preciso colocar `abstract` antes do nome do método na declaração do método.
@@ -2015,7 +2191,41 @@ public class Main {
 }
 ```
 
-A herança permite herdar atributos e métodos de outra classe. O polimorfismo usa esses métodos para performar diferentes tarefas. Isso permite executar uma única ação em formas diferentes.
+A herança permite herdar atributos e métodos de outra classe. O polimorfismo usa esses métodos para performar diferentes tarefas. Isso permite executar uma única ação em formas diferentes. O tipo do objeto não muda, mas a referência pode variar, pois referências de tipos de classes mais genéricas podem referenciar objetos mais específicos. 
+
+```java
+public class ControlaBonificacao {
+  private double soma;
+
+  public void registra(Funcionario funcionario) {
+    double bonificacao = funcionario.getBonificacao();
+    this.soma += bonificacao;
+  }
+    
+  public double getSoma() {
+    return this.soma;
+  }
+}
+
+/*  */
+public static void main(String[] args) {
+  Gerente g1 = new Gerente("Alberto");
+  g1.setSalario(5000.0);
+
+  Funcionario f = new Funcionario("Jorge");
+  f.setSalario(2000.0);
+
+  Editor e = new Editor("Marcos");
+  e.setSalario(2500.0);
+
+  ControlaBonificacao controle = new ControlaBonificacao();
+  controle.registra(g1);
+  controle.registra(f);
+  controle.registra(e);
+
+  System.out.println(controle.getSoma());
+}
+```
 
 O uso mais comum de polimorfismo em POO ocorre quando uma referência de classe pai é usada para se referir a um objeto de classe filho. Qualquer objeto que pode passar em mais de um teste IS-A é considerado polimórfico. Em Java, todos os objetos Java são polimórficos, pois qualquer objeto passará no teste IS-A para seu próprio tipo e para a classe Object.
 
@@ -2388,7 +2598,7 @@ public class Main {
 // Outputs 8 (5 + 3)
 ```
 
-### Sobrecarga de um Método
+### Sobrecarga e Reescrita de um Método
 
 Quando se tem em uma classe 2 os mais métodos com o mesmo nome, mas que possuem número ou parâmetros diferentes, temos uma sobrecarga de método. É diferente de substituir, pois na substituição, um método tem o mesmo nome de método, tipo, número de parâmetros, etc.
 
@@ -2414,6 +2624,20 @@ public static void main(String[] args) {
   double myNum2 = plusMethod(4.3, 6.26);
   System.out.println("int: " + myNum1);
   System.out.println("double: " + myNum2);
+}
+```
+
+Já a sobrescrita de um método é quando uma subclasse cria m novo método com a mesma assinatura e retorno do método herdado.
+
+```java
+public double getBonificacao() {
+  return this.salario * 0.1;
+}
+
+/* */
+
+public double getBonificacao() {
+  return super.getBonificacao() + super.getSalario();
 }
 ```
 
@@ -2614,3 +2838,187 @@ protected void finalize( ) {
 `protected` é um especificador que impede o acesso ao método por um código definido fora de sua classe.
 
 Isso significa que não se pode saber quando ou mesmo se `finalize()` será executado. Por exemplo, se seu programa termina antes de ocorrer a coleta de lixo, ele não será executado.
+
+## Anotações e Reflexão
+
+Anotações permitem que metadados sejam escrito diretamente no código. [^1] Fornecem dados sobre o programa que não fazem parte do programa em si.
+
+[^1]: "No contexto da orientação a objetos, os metadados são informações sobre os elementos do código. Essas informações podem ser definidas em qualquer meio, bastando que o software ou componente as recupere e as utilize para agregar novas informações nos elementos do código." - Componentes Reutilizáveis em Java com Reflexão e Anotações, Eduardo Guerra.
+
+Por si só, as anotações não fazem nada. Elas precisam ser recuperadas e utilizadas para que assim consigam fornecer algo que possa ser usado para realizar alguma tarefa.
+
+Alguns de seus usos são:
+
+- Informação para o compilador → podem ser usados pelo compilador para detectar erros ou suprimir avisos.
+- Processamento em tempo de compilação e em tempo de implantação → ferramentas de softwares podem processar informações de anotações para geral código, arquivos XML, etc.
+- Processamento em execução → algumas anotações são disponíveis para serem examinadas em execução.
+
+### Formatação Básica
+
+Em sua forma mais simples é iniciado com o caractere arroba `@` (@ = AT, as in annotation type) para indicar que uma anotação seguido do seu nome.
+
+```java
+@nomeDaAnotacao
+```
+
+Podem incluir elementos, os quais podem ser nomeados ou não, e o valor desses elementos.
+
+```java
+@Autor(
+  nome = "Richard Russell Riordan Jr",
+  data = "05/06/1964";
+)
+
+// ou
+
+@SuprimirAvisos(valor = "unchecked")
+
+// se há só um elemento nomeado, então ele pode ser omitido
+@SuprimirAvisos("unchecked")
+```
+
+Se a anotação não tem elementos, os parênteses podem ser omitidos.
+
+Também é possível usar múltiplas anotações em uma declaração:
+
+```java
+@Author(name = "Jane Doe")
+@EBook
+```
+
+Se as anotações têm o mesmo tipo, então é chamado de repetição de anotações.
+
+```java
+@Author(name = "Jane Doe")
+@Author(name = "John Smith")
+```
+
+Anotações podem ser aplicadas em declarações: declarações de classes, campos, métodos, e outros elementos do programa.
+
+### Declaração e Tipos de Anotações
+
+Muitas anotações substituem comentários no código, mas antes de usa-las é preciso definir seu tipo.
+
+```java
+@interface ClassPreamble {
+   String author();
+   String date();
+   int currentRevision() default 1;
+   String lastModified() default "N/A";
+   String lastModifiedBy() default "N/A";
+   // Note use of array
+   String[] reviewers();
+}
+```
+
+Anotações são um tipo de interface, por este motivo, sua sintaxe é similar. O corpo da definição contêm declarações do tipo do elemento, o que se parece com métodos e pode conter valores default.
+
+Depois que um tipo é definido, as anotações podem ser usadas com seus valores preenchidos: 
+
+
+```java
+// Author: John Doe
+   // Date: 3/17/2002
+   // Current revision: 6
+   // Last modified: 4/12/2004
+   // By: Jane Doe
+   // Reviewers: Alice, Bill, Cindy
+
+   // class code goes here
+
+          /* ~~~ */
+
+   @ClassPreamble (
+   author = "John Doe",
+   date = "3/17/2002",
+   currentRevision = 6,
+   lastModified = "4/12/2004",
+   lastModifiedBy = "Jane Doe",
+   // Note array notation
+   reviewers = {"Alice", "Bob", "Cindy"}
+)
+public class Generation3List extends Generation2List {
+
+// class code goes here
+}
+```
+
+### Tipos Pré-Definidos
+
+Existe um grupo de tipos de anotações pré-definas, algumas usadas pelo compilador e algumas aplicadas para outras anotações.
+
+#### Usados pelo Java
+
+`@Deprecated ` → indicado que um elemento marcado está depreciado e não deve ser mais usado; o compilador gera um aviso toda vez que um programa usa um método, classe ou campo com essa anotação. Deve ser acompanhado do Javadoc:
+
+```java
+// Javadoc comment follows
+    /**
+     * @deprecated
+     * explanation of why it was deprecated
+     */
+    @Deprecated
+    static void deprecatedMethod() { }
+}
+```
+
+`Override` → informa o compilador que um elemento deve se sobrepor a outro declarado em uma superclasse:
+
+```java
+// mark method as a superclass method
+   // that has been overridden
+   @Override 
+   int overriddenMethod() { }
+```
+
+Embora não seja obrigatório, essa anotação ajuda a prevenir erros. Se um método marcado por ela falhar para corretamente se sobrepor ao método em uma das superclasses, o compilador irá gerar um erro.
+
+`SuppressWarning` → diz ao compilador para suprimir avisos específicos que seriam gerados de outra forma: 
+
+```java
+ // use a deprecated method and tell 
+   // compiler not to generate a warning
+   @SuppressWarnings("deprecation")
+    void useDeprecatedMethod() {
+        // deprecation warning
+        // - suppressed
+        objectOne.deprecatedMethod();
+    }
+```
+
+Todo aviso pertence a uma categoria - "unchecked" ou "deprecation":
+
+```java
+@SuppressWarnings({"unchecked", "deprecation"})
+```
+
+`SafeVarargs` → quando aplicado a um método ou construtor, afirma que o código não performar operações potencialmente inseguras em seus parâmetros _varargs_. Quando usado, avisos unchecked relacionados ao uso de _varargs_ são suprimidos.
+
+`@FunctionalInterface` → indica que o tipo de declaração é pretendido ser uma interface funcional.
+
+### Aplicadas em Outras
+
+Anotações aplicadas a outras são chamadas de _meta-anotações_.
+
+`@Retention` → específica como a anotação marcada é armazenada:
+
+- `RetentionPolicy.SOURCE` – é retido somente a source-level, é ignorada pelo compilador. 
+- `RetentionPolicy.CLASS` – é retido pelo compilador em tempo de compilação, mas ignorado pelo JVM.
+- `RetentionPolicy.RUNTIME` – é retido pelo JVM para que possa ser usado pelo runtime environment.
+
+`@Documented` → indica que toda vez que aquela anotação específica é usada, seus elementos devem ser documentados usando a ferramenta Javadoc.
+
+`@Target` → marca outra para restringir em quais tipos de elementos Java ela pode ser aplicada:
+
+- `ElementType.ANNOTATION_TYPE` - pode ser aplicada em uma anotação.
+- `ElementType.CONSTRUCTOR` - pode ser aplicada em um construtor.
+- `ElementType.FIELD` - pode ser aplicada em um campo ou propriedade.
+- `ElementType.LOCAL_VARIABLE` - pode ser aplicada em uma variável local.
+- `ElementType.METHOD` - pode ser aplicada em uma anotação method-level.
+- `ElementType.PACKAGE` - pode ser aplicada em uma declaração de pacote.
+- `ElementType.PARAMETER` - pode ser aplicada nos parâmetros de um método.
+- `ElementType.TYPE` - pode ser aplicada em qualquer elemento de uma classe.
+
+`@Inherited` → indica que pode ser herdado de uma superclasse; isso só se aplica a declarações de classe.
+
+`@Repeatable` → indica que a anotação marcada pode ser usada mais de uma vez na mesma declaração ou tipo.
