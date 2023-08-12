@@ -43,8 +43,8 @@
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Jave e Orientação a Objetos
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-mediumseagreen "progresso")
 
-- [ ] Java JRE e JDK: compile e execute o seu programa
-- [ ] Java OO: entendo a Orientação a Objetos
+- [x] Java JRE e JDK: compile e execute o seu programa
+- [x] Java OO: entendo a Orientação a Objetos
 - [ ] Java Polimorfismo: entenda herança e intrefaces
 - [ ] Java Exceções: aprenda a criar, lançar e controlar execeções
 - [ ] Java e java.lang: programe com a classe Object e String
