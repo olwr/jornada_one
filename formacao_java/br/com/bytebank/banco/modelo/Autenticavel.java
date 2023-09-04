@@ -1,4 +1,4 @@
-package bytebank_herdado_conta;
+package formacao_java.br.com.bytebank.banco.modelo;
 
 public abstract interface Autenticavel {
 

@@ -1,4 +1,4 @@
-package bytebank_herdado_conta;
+package formacao_java.br.com.bytebank.banco.modelo;
 
 public class ContaCorrente extends Conta implements Tributavel {
 
@@ -20,5 +20,10 @@ public class ContaCorrente extends Conta implements Tributavel {
     @Override
     public void deposita(double valor) {
         super.saldo += valor;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta Corrente, " + super.toString();
     }
 }

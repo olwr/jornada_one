@@ -1,3 +1,5 @@
+package formacao_java.projetos.curso5;
+
 public class FluxoComTratamento {
 
     public static void main(String[] args) {

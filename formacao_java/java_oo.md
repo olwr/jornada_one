@@ -306,8 +306,8 @@ São divididos em duas categorias:
 Se um nome totalmente qualificado, que inclui o pacote e o nome da classe, for fornecido, o compilador pode localizar facilmente o código-fonte ou as classes. A instrução de importação é uma maneira de fornecer a localização adequada para o compilador encontrar essa classe específica.
 
 ```java
-import package.name.Class;   // Import a single class
-import package.name.*;   // Import the whole package
+import packageName.Class;   // Import a single class
+import packageName.*;   // Import the whole package
 ```
 
 Alguns dos pacotes existentes em Java são:
@@ -646,7 +646,7 @@ Para atributos, métodos e construtores:
 | Modificador | Descrição                                                                                                   |
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `public`    | o código é acessível para qualquer outra                                                                    |
-| default     | o código é somente acessível por classes no mesmo pacote. É usado quando um modificador não é especificado. |
+| default ou `<<package private>>`     | o código é somente acessível por classes no mesmo pacote. É usado quando um modificador não é especificado. |
 | `private`   | o código é somente acessível dentro da classe declarada                                                     |
 | `protected` | o código é acessível no mesmo pacote e subclasses                                                           |
 

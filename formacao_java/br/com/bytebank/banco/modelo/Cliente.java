@@ -1,4 +1,11 @@
-package bytebank_herdado_conta;
+package formacao_java.br.com.bytebank.banco.modelo;
+
+/**
+ * Classe que representa um cliente no Bytebank.
+ * 
+ * @author Oliver
+ * @version 0.1
+ */
 
 public class Cliente implements Autenticavel {
 

@@ -1,3 +1,5 @@
+package formacao_java.projetos.curso5;
+
 public class Conexao implements AutoCloseable {
     public Conexao() {
         System.out.println("Abrindo conexão");

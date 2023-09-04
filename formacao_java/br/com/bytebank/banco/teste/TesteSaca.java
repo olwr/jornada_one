@@ -1,4 +1,6 @@
-package bytebank_herdado_conta;
+package formacao_java.br.com.bytebank.banco.teste;
+
+import formacao_java.br.com.bytebank.banco.modelo.*;
 
 public class TesteSaca {
     public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class TesteSaca {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(conta.saldo);
+        System.out.println(conta.getSaldo());
 
         Conta conta2 = new ContaCorrente(-21, 0);
         conta2.deposita(150);

@@ -1,3 +1,5 @@
+package formacao_java.projetos.curso5;
+
 public class FluxoComError {
     public static void main(String[] args) {
         System.out.println("Ini do main");

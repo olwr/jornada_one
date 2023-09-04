@@ -1,3 +1,6 @@
+package formacao_java.projetos.curso5;
+// import formacao_java.projetos.curso5.Conexao.*;
+
 public class TesteConexao {
     public static void main(String[] args) {
         
