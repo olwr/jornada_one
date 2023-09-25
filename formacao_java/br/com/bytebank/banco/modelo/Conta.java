@@ -9,7 +9,7 @@ package formacao_java.br.com.bytebank.banco.modelo;
  */
 
 // código fonte, blueprint para contas
-public abstract class Conta { // tipo Conta
+public abstract class Conta implements Comparable<Conta> { // tipo Conta
     // atributos do tipo Conta
     protected double saldo;
     private int agencia;
@@ -37,8 +37,8 @@ public abstract class Conta { // tipo Conta
         Conta.totalDeContas++;
         this.agencia = agencia;
         this.numero = numero;
-        System.out.println("estou criando uma conta " + this.numero);
-        System.out.println("Total de contas: " + Conta.totalDeContas);
+        // System.out.println("estou criando uma conta " + this.numero);
+        // System.out.println("Total de contas: " + Conta.totalDeContas);
     }
 
     /**
@@ -71,6 +71,33 @@ public abstract class Conta { // tipo Conta
     @Override
     public String toString() {
         return "Número: " + this.numero + " Agência: " + this.agencia;
+    }
+
+    @Override
+    public boolean equals(Object ref) {
+        Conta outra = (Conta) ref;
+        
+        if (this.agencia != outra.agencia || this.numero != outra.numero) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public String igualdade(Conta outra){
+        String diferente = "Não é a mesma conta!";
+        String igual = "É a mesma conta!";
+
+        if (equals(outra) == false) {
+            return diferente;
+        } else {
+            return igual;
+        }
+    }
+
+    @Override
+    public int compareTo(Conta outra) {
+        return Double.compare(this.saldo, outra.saldo);
     }
 
     // getters e setters, retornam e definem valores

@@ -1,8 +1,8 @@
 package formacao_java.br.com.bytebank.banco.modelo;
 
-public class ContaPoupaca extends Conta {
+public class ContaPoupanca extends Conta {
     
-    public ContaPoupaca(int agencia, int numero) {
+    public ContaPoupanca(int agencia, int numero) {
         super(agencia, numero);
     }
 

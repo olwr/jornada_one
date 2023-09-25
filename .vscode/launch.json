@@ -1,0 +1,392 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TesteLambda",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteLambda",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteClasseAnonima",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteClasseAnonima",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteOrdenaçãoDeListas",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteOrdenaçãoDeListas",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteOutrosWrappers",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteOutrosWrappers",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteWrapper",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteWrapper",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteArrayListEquals",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteArrayListEquals",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteArrayList",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteArrayList",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteGuardador",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteGuardador",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "TesteContas",
+            "request": "launch",
+            "mainClass": "formacao_java.br.com.bytebank.banco.teste.TesteContas",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteSaca",
+            "request": "launch",
+            "mainClass": "formacao_java.br.com.bytebank.banco.teste.TesteSaca",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteTributaveis",
+            "request": "launch",
+            "mainClass": "formacao_java.br.com.bytebank.banco.teste.TesteTributaveis",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Fatorial",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.Fatorial",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Multiplos3",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.Multiplos3",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Programa",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.Programa",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "ProgramaComBreak",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.ProgramaComBreak",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteEscopo",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteEscopo",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteFor",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteFor",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteIR",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteIR",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteIR2",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteIR2",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteIdade",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteIdade",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteIdade2",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteIdade2",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteLacoEncadeado",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteLacoEncadeado",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteLacoEncadeado2",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteLacoEncadeado2",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteSalario",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteSalario",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteSomatoria",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteSomatoria",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteSwitch",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteSwitch",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteWhile",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso1.TesteWhile",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "CriaConta",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.CriaConta",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "CriaPersonagem",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.CriaPersonagem",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Empresario",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.Empresario",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaMetodo",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TestaMetodo",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaValores",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TestaValores",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteBanco",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TesteBanco",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteContaSemCliente",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TesteContaSemCliente",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteGetESet",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TesteGetESet",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteReaproveitamento",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TesteReaproveitamento",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteReferencias",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso2.TesteReferencias",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaFuncionario",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TestaFuncionario",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaGerente",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TestaGerente",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaSistema",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TestaSistema",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteContas(1)",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TesteContas",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteReferencias(1)",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TesteReferencias",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteTributaveis(1)",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso3.TesteTributaveis",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Fluxo",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.Fluxo",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "FluxoComError",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.FluxoComError",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "FluxoComTratamento",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.FluxoComTratamento",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Principal",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.Principal",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaContaComExcexaoChecked",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.TestaContaComExcexaoChecked",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteConexao",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.TesteConexao",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteString",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso5.TesteString",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.Teste",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteArrayReferencias",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteArrayReferencias",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteArrayString",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteArrayString",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TesteObject",
+            "request": "launch",
+            "mainClass": "formacao_java.projetos.curso6.TesteObject",
+            "projectName": "jornada_one_480a8327"
+        }
+    ]
+}

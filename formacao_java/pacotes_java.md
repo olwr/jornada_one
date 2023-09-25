@@ -12,6 +12,24 @@
     - [StringBuilder](#stringbuilder)
   - [Object](#object)
     - [toString()](#tostring)
+  - [java.util](#javautil)
+  - [Estrutura de dados: Arrays e Listas](#estrutura-de-dados-arrays-e-listas)
+    - [Arrays de Referências](#arrays-de-referências)
+      - [Casting Implícito e Explícito](#casting-implícito-e-explícito)
+    - [ArrayList](#arraylist)
+      - [Array para Lista](#array-para-lista)
+    - [LinkedList](#linkedlist)
+      - [ArrayList vs. LinkedList](#arraylist-vs-linkedlist)
+    - [Vector](#vector)
+    - [Comparação e Ordenação de Listas](#comparação-e-ordenação-de-listas)
+        - [Interface Collection](#interface-collection)
+  - [Wrapper](#wrapper)
+  - [Classes Internas e Expressões Lambdas](#classes-internas-e-expressões-lambdas)
+    - [Classe Aninhada](#classe-aninhada)
+    - [Classe Interna Estática](#classe-interna-estática)
+    - [Classe Interna de Método](#classe-interna-de-método)
+    - [Classe Anônima](#classe-anônima)
+    - [Expressões Lambda](#expressões-lambda)
 
 
 ## Criação de Pacotes
@@ -308,3 +326,762 @@ Qualquer objeto pode ser referenciado pelo tipo Object, já que ela é a princip
 ### toString()
 
 É boa prática sobrescrever o método para dar um significado maior do que a saída padrão desse método. Mas o método `toString` originalmente devolve informações sobre o estado do objeto. É útil para a depuração no desenvolvimento.
+
+## java.util
+
+Contêm uma coleção de frameworks, classes de suporte de inicialização, service loader, propriedades, gerador de número aleatório, análise de strings e escaneamento de classes, codificação e decodificação base64, array bit e diversas classes de utilidade miscelânea.
+
+Esse pacote também contêm legacy collection classes e date and time legacy classes.
+
+![Alt text](imgs/java.util.Collection.gif)
+
+## Estrutura de dados: Arrays e Listas
+
+Arrays são estruturas de dados que armazenam uma coleção sequencial de tamanho fixo de elementos do mesmo tipo. Sua inicializando sempre é dada com o valor padrão para aquele data type (int = 0, ref = null, etc) e sua contagem começa da posição 0.
+
+Sintaxes ↓
+
+```java
+dataType[] arrayRefVar;
+
+double[] peso;
+```
+
+```java
+dataType arrayRefVar = {value1, value2, value3...};
+
+String[] nomes = {"Max", "Sam", "Alex"};
+```
+
+```java
+dataType[] arrayRefVar = new dataType[arraySize];
+
+int[] contagem = new int[10];
+```
+Os elementos são acessados através de seu número de index, ou seja, sua posição. É muito comum usar looping para trabalhar com arrays.
+
+```java
+for (int i = 0; i < arrayRefVar.length; i++) {
+  // code
+}
+```
+
+Ordenação de arrays:
+
+```java
+import java.util.Arrays;
+
+public class TesteSortArrays {
+  public static void main(String[] args) {
+    int[] numeros = new int[]{43, 15, 64, 22, 89};
+
+    Arrays.sort(numeros); //método utilitário sort
+
+    System.out.println(Arrays.toString(numeros)); //método utilitário toString
+
+    //Saida : [15, 22, 43, 64, 89]
+    }
+}
+```
+
+### Arrays de Referências
+
+Um array de referências é um array que não guarda o objeto, mas a referência de onde ele se encontra.
+
+```java
+dataType[] arrayRefVar = new dataType[arraySize];
+
+arrayRefVar[i] = objetVar;
+```
+
+```java
+ContaCorrente[] contas = new ContaCorrente[5];
+
+ContaCorrente cc1 = new ContaCorrente(231, 1205);
+contas[0] = cc1;
+
+ContaCorrente cc2 = new ContaCorrente(231, 1206);
+contas[1] = cc2;
+
+ContaCorrente ref;
+```
+
+![Alt text](imgs/arrayRef.png)
+
+É possível também criar um array com tipo mais genérico para que se possa guardar mais de um tipo de referência ou valor, sendo um array do tipo `Object` o único que pode guardar uma referência ou valor de qualquer tipo.
+
+Mas para referenciar o array de tipo mais genérico usando uma referência de tipo específico é necessário definir um type cast para que o Java entenda esse isso é possível, que não vai gerar erro.
+
+O mesmo é necessário caso `Object` ou outra referência genérica for usada, mas essas referências não possuírem um método que está sendo chamado.
+
+```java
+Conta[] contas = new Conta[5]; 
+
+ContaPoupanca ref = (ContaPoupanca) contas[1];
+```
+
+```java
+Object[] contas = new Object[5];
+
+System.out.println( ((Conta) contas[1]).getNumero() );
+```
+
+#### Casting Implícito e Explícito
+
+Trabalhar com cast implícito costuma ser a norma. Ele aparece e é possível nas declarações onde é o mesmo tipo ou cabe um tipo dentro de outro. Dessa forma o compilador não exige um cast explícito.
+
+```java
+int numero = 3;
+double valor = numero; // cast implícito
+```
+
+```java
+int numero = 3;
+double valor = (double) numero; //cast explícito
+```
+
+Com o mesmo exemplo, o contrario não funciona, pois um tipo não cabe dentro do outro.
+
+```java
+double valor = 3.56;
+int numero = (int) valor; //cast explicito é exigido pelo compilador
+// Nesse caso o compilador joga todo valor fracional fora e guarda apenas o valor inteiro
+```
+
+Nas referências, o mesmo princípio se aplica. Se o cast sempre funciona não é necessário deixá-lo explícito.
+
+```java
+ContaCorrente cc1 = new ContaCorrente(22, 33);
+Conta conta = cc1; //cast implícito 
+```
+
+```java
+ContaCorrente cc1 = new ContaCorrente(22, 33);
+Conta conta = (Conta) cc1; //cast explícito, mas desnecessário 
+```
+
+Mas o cast explícito nem sempre funciona. Ele só funciona se for possível, há casos em que o compilador sabe que um cast é impossível e aí nem compila, nem com type cast.
+
+```java
+Cliente cliente = new Cliente();
+Conta conta = (Conta) cliente; //impossível, não compila
+```
+
+Como o `cliente` não estende a classe `Conta` ou implementa uma interface do tipo `Conta`, é impossível esse cast funcionar, pois uma referência do tipo `Conta` jamais pode apontar para um objeto do tipo `Cliente`.
+
+### ArrayList
+
+É uma lista, listas são coleções sequenciais (trabalham com índice) e aceitam elementos duplicados.
+
+É um array dinâmico. Diferente de `Array`, que nasce e morre com o tamanho ao qual foi declarado, `ArrayList` permite que itens sejam adicionados e removidos quando se quiser.
+
+A sintaxe também é diferente:
+
+```java
+import java.util.ArrayList;
+
+ArrayList<dataType> refVar = new ArrayList<dataType>();
+
+// forma genérica, mas não indicada
+
+ArrayList refVar = new ArrayList();
+```
+
+```java
+import java.util.ArrayList;
+
+ArrayList<String> clients = new ArrayList<String>();
+
+// forma genérica, mas não indicada
+
+ArrayList clients = new ArrayList();
+```
+
+É uma classe que contem um `Array` comum dentro da mesma. Quando um elemento é adicionado, é colocado dentro deste array. Se este array não for grande o suficiente, um novo e maior array é criado para substituir o antigo (este sendo removido). O limite é a memória JVM.
+
+Um `ArrayList` cria objetos, não é necessário informar seu tipo, mas pode ocorrer exceções de cast de classe, sendo que o primitivos devem ser especificados com a sua classe wrapper equivalente: `Integer`, `Boolean`, `Character`, `Double`, etc.
+
+O tipo é informado dentro do que é chamado de "generics". Os generics são considerados boa prática por antecipar problemas de casts no momento de compilação, evitar casts excessivos e tornar o código mais legível, já que fica explícito o tipo dos elementos.
+
+Seus métodos principais são: 
+
+`add()` → adiciona um elemento.
+
+```java
+clients.add("Trevor");
+```
+
+`get()` → acessa um item pelo seu index.
+
+```java
+clients.get(0);
+```
+
+`set()` → modifica o elemento pelo seu index.
+
+```java
+clients.set(0, "Abel");
+```
+
+`remove()` → remove pelo seu index.
+
+```java
+clients.remove(0);
+```
+
+`clear()` → remove todos os elementos de um `ArrayList`.
+
+```java
+clients.clear();
+```
+
+`size()` → retorna quantos elementos um `ArrayList` possui.
+
+```java
+clients.size();
+```
+
+Para iterar dentro de um `ArrayList` com um loop `for`, é necessário usar o método `size()`.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> clients = new ArrayList<String>();
+    clients.add("Alberto");
+    clients.add("Monica");
+    clients.add("Charles");
+    clients.add("Ana");
+    for (int i = 0; i < clients.size(); i++) {
+      System.out.println(clients.get(i));
+    }
+  }
+}
+```
+
+É possível também usar o `for-each` para iterações.
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> clients = new ArrayList<String>();
+    clients.add("Alberto");
+    clients.add("Monica");
+    clients.add("Charles");
+    clients.add("Ana");
+    for (String i : clients) {
+      System.out.println(i);
+    }
+  }
+}
+```
+
+Além desses, no `java.util` há a classe `Collections`, a qual inclui o método `sort()` que pode ordenar listas alfabeticamente ou numericamente.
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> clients = new ArrayList<String>();
+    clients.add("Alberto");
+    clients.add("Monica");
+    clients.add("Charles");
+    clients.add("Ana");
+    Collections.sort(clients);
+    for (String i : clients) {
+      System.out.println(i);
+    }
+  }
+}
+```
+
+É possível definir uma capacidade inicial usando o construtor que sobrecarrega o `ArrayList` e passa um parâmetro e capacidade.
+
+```java
+ArrayList lista = new ArrayList(26); //capacidade inicial
+```
+
+Também é possível criar uma lista a partir de outra:
+
+```java
+ArrayList lista = new ArrayList(26); //capacidade inicial
+lista.add("RJ");
+lista.add("SP");
+//outros estados
+ArrayList nova = new ArrayList(lista); //criando baseado na primeira lista
+```
+
+#### Array para Lista
+
+Dentro do pacote `java.util` existe a classe `java.util.Arrays` que possui vários métodos estáticos auxiliares para se trabalhar com arrays. Um destes métodos pode, de forma simples, transformar um `Array` em uma lista:
+
+```java
+List<dataType> refName = Arrays.asList(refArray);
+```
+
+```java
+public class ArrayToArrayList {
+
+  public static void main(String[] args) {
+    List<String> argumentos = Arrays.asList(args);
+  }
+}
+```
+
+### LinkedList
+
+É quase idêntica ao `ArrayList`, porém, armazena itens em um "container". A lista tem um link para o primeiro container e cada container tem um link para o próximo container na lista. Isso é nomeado de lista duplamente encadeada.
+
+![Alt text](imgs/Linkedlist.png)
+
+
+Para adicionar um item o elemento é colocado em um novo container e este container é linkado para os outros da lista.
+
+```java
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<String> clients = new LinkedList<String>();
+    clients.add("Alberto");
+    clients.add("Monica");
+    clients.add("Charles");
+    clients.add("Ana");
+    System.out.println(clients);
+  }
+}
+```
+
+A sua maior diferença está nos métodos, sendo que `ArrayList` é mais eficiente em casos que se quer acessar itens aleatórios na lista, enquanto `LinkedList` oferece diversos métodos eficientes para operações mais específicas.
+
+| Método          | Descrição                           |
+| --------------- | ----------------------------------- |
+| `addFirst()`    | adiciona um item no início da lista |
+| `addLast()`     | adiciona um item no final da lista  |
+| `removeFirst()` | remove um item do início da lista   |
+| `removeLast()`  | remove um item do final da lista    |
+| `getFirst()`    | retorna o primeiro item da lista    |
+| `getLast()`     | retorna o último item da lista      |
+
+
+#### ArrayList vs. LinkedList
+
+Ambos são coleções que podem conter múltiplos objetos de um mesmo tipo. A classe `LinkedList` tem todos os mesmo métodos que `ArrayList`, isto porque ambos implementam a interface `list`.
+
+Porém, mesmo que possam ser usadas da mesma, são construídas de formas distintas.
+
+É recomendado usar `ArrayList` para armazenar e acessar dados, já `LinkedList` é mais recomendada para manipulação de dados.
+
+Ao remover/manipular um item, o `ArrayList` passa por uma reestruturação muito mais custosa, enquanto o `LinkedList` só altera os pointers dos itens anterior e posterior.
+
+Já iterações são mais trabalhosas no `LinkedList` pela necessidade de sempre começar com o primeiro item da lista, mesmo que se queira acessar um item muito mais a frente da lista. Essa falta de acesso direto dificulta as iterações.
+
+### Vector
+
+É quase igual a um `ArrayList`. É um estrutura de dados que implementa um array dinâmico,contêm componentes que podem ser acessados por um index inteiro, cresce e diminui com base na necessidade de acomodar os elementos que são adicionados e removidos após a criação do `Vector`.
+
+Todo vetor tenta otimizar manutenção de capacidade mantendo uma capacidade e uma capacidade incrementada. A capacidade é sempre pelo menos tão grande quanto o tamanho do vetor; é usualmente maior porquê a medida em que os componentes são adicionados, o armazenamento do vetor cresce em pedaços do tamanho da capacidade incrementada.
+
+```java
+// Constructs an empty vector so that its internal data array has size 10 and its standard capacity increment is zero
+Vector()
+
+// Constructs an empty vector with the specified initial capacity and with its capacity increment equal to zero.
+Vector(int initialCapacity)
+
+// Constructs an empty vector with the specified initial capacity and capacity increment.
+Vector(int initialCapacity, int capacityIncrement)
+```
+
+Seu grande diferencial é que ele é thread-safe, ou seja, quando há threads concorrentes, ele garanti que somente um será executado, enquanto  outro fica no escalonador do processador, apenas aguardando seu momento para ser executado.
+
+Essa é uma forma de evitar que os threads entrem em race condition, ele faz uma exclusão mútua para se certificar que determinado recurso somente possa ser utilizado por um thread por vez.
+
+Isso torna o `Vector` sincronizado. Se uma implementação thread-safe não é necessária, é recomendado o uso de `ArrayList` sobre `Vector`, isso pois essa segurança dele vem acima as custas do desempenho.
+
+### Comparação e Ordenação de Listas
+
+2 interfaces podem ser usadas para ordenar listas, `Comparator` do pacote `java.util.Comparator`, que precisa de importação, e `Comparable` do pacote `java.lang.Comparable`, que não precisa de importação.
+
+```java
+import java.util.Comparator;
+
+public class className implements Comparator<Object> {}
+```
+
+```java
+public class className implements Comparable<Object> {}
+```
+
+Os métodos dessas classes comparam os elementos e podem retornam o seguinte:
+
+```
+if x > y, returns a positive int number
+if x < y, returns a negative int number
+if x == y, returns 0
+```
+
+Os métodos que podem ser utilizados para cada interface:
+
+`compareTo()` ↓
+
+```java
+@Override
+public int compareTo(Object ref) {
+  return intValue;
+}
+```
+
+```java
+@Override
+public int compareTo(Conta outra) {
+  return Double.compare(this.saldo, outra.saldo);
+}
+```
+
+Quando ele é usado define uma ordem natural, ou seja, a regra de ordem definida dentro dele é o que vai valer como padrão de ordenação (quando pede a organização, mas não se chama uma regra definida pelo `Comparator`) e pode ser executado de 2 formas:
+
+```java
+import java.util.List;
+
+listName.sort(null);
+```
+
+```java
+import java.util.Collections;
+
+Collections.sort(listName); 
+```
+
+`Collections` ainda tem outros métodos de organização como: `reverse()` e `shuffle()`.
+
+`compare()` ↓
+
+```java
+import java.util.Comparator;
+
+@Override
+public int compare(Object ref) {
+  return intValue;
+}
+```
+
+```java
+import java.util.Comparator;
+
+public class ComparadorNumeroDeContas implements Comparator<Conta> {
+
+  @Override
+  public int compare(Conta c1, Conta c2) {
+
+    return Integer.compare(c1.getNumero(), c2.getNumero());
+  }
+}
+```
+
+`compareTo()` String ↓
+
+```java
+public int compareTo(String string2);
+```
+
+```java
+import java.util.Comparator;
+
+public class ComparadorDeStrings implements Comparator<Conta> {
+
+  @Override
+  public int compare(String nome, String outroNome) {
+
+    String nome = "Ana";
+    String outroNome = "Patrick";
+
+    return nome.compareTo(outroNome);
+  }
+
+}
+```
+
+##### Interface Collection
+
+![Alt text](imgs/Collection-Framework-hierarchy.webp)
+
+## Wrapper
+
+São classes que oferecem uma maneira de usar tipos primitivos como objetos, elas contém funcionalidades e encapsulam a variável de tipo primitivo
+
+| Tipos de Dados Primitivos | Wrapper Classes |
+| ------------------------- | --------------- |
+| byte                      | Byte            |
+| short                     | Short           |
+| int                       | Integer         |
+| long                      | Long            |
+| float                     | Float           |
+| double                    | Double          |
+| boolean                   | Boolean         |
+| char                      | Character       |
+
+Elas são necessárias para se usar quando se trabalha com lista, já que listas armazenam apenas objetos, ou seja, tipos primitivos não podem ser usados.
+
+Essas conversões explícitas ou implícitas se chamam Autoboxing (primitivo → objeto) e Unboxing (objeto → primitivo). 
+
+Além disso, por serem objetos há alguns métodos que podem ser usados por elas. Como exemplo, métodos para pegar seus valores e para converte-las em string.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Integer myInt = 5;
+    Double myDouble = 5.99;
+    Character myChar = 'A';
+    System.out.println(myInt.intValue());
+    System.out.println(myDouble.doubleValue());
+    System.out.println(myChar.charValue());
+  }
+}
+```
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Integer myInt = 100;
+    String myString = myInt.toString();
+    System.out.println(myString.length());
+  }
+}
+```
+
+## Classes Internas e Expressões Lambdas
+
+![Alt text](imgs/classe-interna.png)
+
+São classes que são definidas dentro de outra classe. Sendo que elas tem um relacionamento especial com sua classe externa (classe onde ela está definida), em relação as outras classes.
+
+Elas podem acessar os membros privados da classe externa, isso porque implicitamente a classe interna tem uma instância da classe externa.
+
+A classe interna pode ter tudo que qualquer classe possa ter, como: variáveis de instância, métodos, blocos de inicialização, herança, implementação, etc.
+
+### Classe Aninhada
+
+São todas as classes que estão dentro de outra classe:
+
+```java
+class ClasseExterna {
+    // código...
+    class ClasseAninhada {
+      // código ...
+    }
+}
+```
+
+É utilizado para manipular dados de processamento interno, mas é limitada pela classe que precisa dela. Geralmente se usa esse tipo quando ambas classes estão intimamente ligadas.
+
+A classe aninha terá acesso aos dados primitivos declarados pela classe que a chamou.
+
+O ponto positivo é que esse tipo de recurso aumento o encapsulamento, cria um código mais legível e melhora a manutenção do código.
+
+Como a classe aninhada tem um escopo, ela está limitada pelas regras do escopo. Por exemplo, uma variável de membro pode ser acessada apenas por uma instância da classe (um objeto). O mesmo é verdade para uma classe aninhada. 
+
+```java
+public class Manager extends Employee {  
+
+  private DirectReports directReports; 
+
+  public Manager() {
+    this.directReports = new DirectReports();  
+  }
+
+  // código...  
+
+  private class DirectReports {  . . .  } 
+}
+```
+
+### Classe Interna Estática
+
+Ela não tem acesso aos membros da instância da classe encapsulada, somente os membros estáticos, tem a mesma visibilidade de uma classe externa.
+
+```java
+public class Calculadora {
+
+  public static class Soma{
+    int a = 1;
+    int b = 2;
+  }
+}
+```
+
+Neste exemplo a classe soma tem dois atributos inteiros, a e b:
+
+- a sempre será 1
+- b sempre será 2
+
+Por serem estáticos... não se alterarão.
+
+### Classe Interna de Método
+
+É uma classe declarada dentro de um método, ele só pode ser instanciada dentro do método, ou seja, ela tem como escopo o do método na qual foi definida. 
+
+Ela também não pode ser declarada como estática em hipótese alguma, os únicos modificadores que podem ser atribuídos a ela são: final e abstract.
+
+```java
+protected  void Calcular(){
+
+  class Calculo{
+    private int soma;
+
+    public void setSoma(int soma) {
+      this.soma = soma;
+    }
+
+    public int getSoma() {
+      return soma;
+    }
+  }
+}
+```
+
+A classe apenas poderá ser acessada por outras classes deste método.
+
+### Classe Anônima
+
+É toda classe que não é declarada explicitamente, mas esta sendo chamada no código. Representa o comportamento de uma classe ou de uma interface.
+
+```java
+protected  void Calcular(){
+  int a,b;
+  Calculo calculo = new Calculo;
+  calculo.somar({
+public void somei(){
+
+}
+});// parece o click listener
+
+}
+```
+
+Ou seja, classes anônimas são classes internas que funciona como uma subclasse do tipo do objeto, não de onde esta sendo referenciado.
+
+O Java cria, por baixo dos panos, uma classe que corresponde a ela.
+
+Simplificando, cria a classe como um objeto, implementa se for necessário, passa o construtor e define sua funcionalidade:
+
+```java
+Object<generics> comp = new Object<generics>() {
+
+  // code block
+
+};
+```
+
+```java
+Comparator<Conta> comp = new Comparator<Conta>() {
+
+  @Override
+  public int compare(Conta c1, Conta c2) {
+    return Integer.compare(c1.getNumero(), c2.getNumero());
+  }
+
+};
+```
+
+As funções anônimas são usadas para facilitar a criação de um `Function Object`, ou seja, um objeto que encapsula somente uma função ou método.
+
+### Expressões Lambda
+
+É um pequeno bloco de código que recebe parâmetros e retorna um valor. São similares a métodos, mas não precisam de um nome e podem ser implementados direto no corpo de um método.
+
+```java
+parameter -> expression
+```
+
+Simplificando, é uma função sem declaração, ou seja, não é necessário colocar um nome, um tipo de retorno e o modificador de acesso. A ideia é que o método seja declarado no mesmo lugar em que será usado.
+
+```java
+(parameter1, parameter2) -> expression
+```
+
+Expressões são limitadas. Elas devem imediatamente retornar um valor, e não podem conter variáveis, atribuições ou declarações como `if` ou `for`. Para realizar operações mais complexas, um bloco de código pode ser usado dentro de {chaves}.
+
+Se a expressão lambda precisa retornar um valor, então o bloco de código deve ter uma declaração `return`.
+
+```java
+(parameter1, parameter2) -> { code block }
+```
+
+```
+(int a, int b) -> {  return a + b; }
+() -> System.out.println("Hello World");
+(String s) -> { System.out.println(s); }
+() -> 42
+() -> { return 3.1415 };
+a -> a > 10
+```
+
+```java
+  lista.sort( (Conta c1, Conta c2) -> { // expressão lambda
+    return Integer.compare(c1.getNumero(), c2.getNumero());
+  }
+);
+```
+
+Normalmente é utilizado como parâmetros para uma função:
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+    numbers.forEach( (n) -> { System.out.println(n); } );
+  }
+}
+```
+
+Expressões lambda podem ser armazenadas em variáveis se o tipo da variável for uma interface que contem somente um método. A expressão deve ter o mesmo número de parâmetros e o mesmo tipo de retorno que o método.
+
+```java
+import java.util.ArrayList;
+import java.util.function.Consumer;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+    Consumer<Integer> method = (n) -> { System.out.println(n); };
+    numbers.forEach( method );
+  }
+}
+```
+
+Para usar em um método, o método deve ter um parâmetro com uma interface de método-singular como seu tipo; chamar o método desta interface irá executar a expressão.
+
+```java
+interface StringFunction {
+  String run(String str);
+}
+
+public class Main {
+  public static void main(String[] args) {
+    StringFunction exclaim = (s) -> s + "!";
+    StringFunction ask = (s) -> s + "?";
+    printFormatted("Hello", exclaim);
+    printFormatted("Hello", ask);
+  }
+  public static void printFormatted(String str, StringFunction format) {
+    String result = format.run(str);
+    System.out.println(result);
+  }
+}
+```
