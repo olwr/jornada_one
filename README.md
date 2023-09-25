@@ -34,29 +34,39 @@
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Business Agility
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-gold "progresso")
 
-- [ ] Agilidade: promovendo a transformação ágil
-- [ ] Gestão Ágil: liderando a mudança em um ambiente de agilidade
-- [ ] A Empresa Ágil: introduzindo o Business Agility nas organizações
-- [ ] Organização de  Equipes Ágeis: os papéis existentes em uma equipe
-- [ ] Diagnóstico de aprendizado
+- [x] Agilidade: promovendo a transformação ágil
+- [x] Gestão Ágil: liderando a mudança em um ambiente de agilidade
+- [x] A Empresa Ágil: introduzindo o Business Agility nas organizações
+- [x] Organização de  Equipes Ágeis: os papéis existentes em uma equipe
+- [x] Diagnóstico de aprendizado
 
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Jave e Orientação a Objetos
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-mediumseagreen "progresso")
 
 - [x] Java JRE e JDK: compile e execute o seu programa
 - [x] Java OO: entendo a Orientação a Objetos
-- [ ] Java Polimorfismo: entenda herança e intrefaces
-- [ ] Java Exceções: aprenda a criar, lançar e controlar execeções
-- [ ] Java e java.lang: programe com a classe Object e String
-- [ ] Java e java.util: Coleções, wrappers e Lambda expressions
-- [ ] Diagnóstico de aprendizado
+- [x] Java Polimorfismo: entenda herança e intrefaces
+- [x] Java Exceções: aprenda a criar, lançar e controlar execeções
+- [x] Java e java.lang: programe com a classe Object e String
+- [x] Java e java.util: Coleções, wrappers e Lambda expressions
 
-## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Enpreendedorismo
+## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Empreendedorismo
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-gold "progresso")
 
-Liberação 20/06
+- [x] Lean Startup
+- [x] Empreendedorismo: da ideia ao plano de negócios
+- [x] Empreendedorismo: abrindo sua empresa do jeito certo
+- [x] Pitch entrevistas
+- [x] Business Model Canvas I
+- [x] Business Model Canvas II
 
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Spring Framework
 ![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-mediumseagreen "progresso")
 
-Liberação 27/07
+- [ ] SQL com MySQL
+- [ ] Java e JDBC
+- [ ] Persistência com JPA
+- [ ] Java e JPA
+- [ ] Spring Boot 3: desenvolva uma API Rest em Java
+- [ ] Spring Boot 3: aplique boas práticas e proteja uma API Rest
+- [ ] Spring Boot 3: documente, teste e prepare uma API para o deploy
