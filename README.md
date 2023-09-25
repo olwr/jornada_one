@@ -51,7 +51,7 @@
 - [x] Java e java.util: Coleções, wrappers e Lambda expressions
 
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Empreendedorismo
-![progresso: concluído] (https://img.shields.io/badge/progresso-concluído-gold "progresso")
+![progresso: concluído](https://img.shields.io/badge/progresso-concluído-gold "progresso")
 
 - [x] Lean Startup
 - [x] Empreendedorismo: da ideia ao plano de negócios
