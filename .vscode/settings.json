@@ -12,16 +12,38 @@
         "fracional",
         "holocracia",
         "instanceof",
+        "interrelacionam",
+        "Korth",
         "Lally",
         "linka",
         "linkado",
+        "Multimodelo",
+        "Navathe",
         "primeria",
         "produtizadas",
         "Refri",
+        "Silberschatz",
         "strictfp",
         "timebox",
         "typeof",
         "Uzzell",
         "VUCA"
-    ]
+    ],
+    "sqltools.connections": [],
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "formacao_java_e_spring_boot\\jdbc\\loja_virtual_repo\\lib\\mysql-connector-java-8.0.17.jar",
+            "formacao_java_e_spring_boot\\jdbc\\loja_virtual_repo\\lib\\c3p0-0.9.5.4.jar",
+            "formacao_java_e_spring_boot\\jdbc\\loja_virtual_repo\\lib\\mchange-commons-java-0.2.16.jar",
+            "formacao_java_e_spring_boot\\jdbc\\br\\com\\loja_virtual\\jdbc\\lib\\c3p0-0.9.5.4.jar",
+            "formacao_java_e_spring_boot\\jdbc\\br\\com\\loja_virtual\\jdbc\\lib\\mchange-commons-java-0.2.16.jar",
+            "formacao_java_e_spring_boot\\jdbc\\br\\com\\loja_virtual\\jdbc\\lib\\mysql-connector-java-8.0.17.jar"
+        ],
+        "exclude": [
+            "formacao_java_e_spring_boot/jdbc/loja_virtual_repo/lib/c3p0-0.9.5.4.jar",
+            "formacao_java_e_spring_boot/jdbc/loja_virtual_repo/lib/mchange-commons-java-0.2.16.jar",
+            "formacao_java_e_spring_boot/jdbc/loja_virtual_repo/lib/mysql-connector-java-8.0.17.jar"
+        ]
+    }
 }

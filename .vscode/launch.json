@@ -6,6 +6,69 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestaInsercaoComProduto",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.br.com.loja_virtual.jdbc.teste.TestaInsercaoComProduto",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaListagemDeCategorias",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.br.com.loja_virtual.jdbc.teste.TestaListagemDeCategorias",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaInsercaoComProduto",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaInsercaoComProduto",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaPoolConexoes",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaPoolConexoes",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaInsercaoComParametro",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaInsercaoComParametro",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaRemocao",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaRemocao",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaInsercao",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaInsercao",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaListagem",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaListagem",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
+            "name": "TestaConexao",
+            "request": "launch",
+            "mainClass": "formacao_java_e_spring_boot.jdbc.loja_virtual_repo.TestaConexao",
+            "projectName": "jornada_one_480a8327"
+        },
+        {
+            "type": "java",
             "name": "TesteLambda",
             "request": "launch",
             "mainClass": "formacao_java.projetos.curso6.TesteLambda",
