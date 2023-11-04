@@ -61,12 +61,12 @@
 - [x] Business Model Canvas II
 
 ## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Spring Framework
-![progresso: em andamento](https://img.shields.io/badge/progresso-em%20andamento-mediumseagreen "progresso")
+![progresso: concluído](https://img.shields.io/badge/progresso-concluído-mediumseagreen "progresso")
 
-- [ ] SQL com MySQL
-- [ ] Java e JDBC
-- [ ] Persistência com JPA
-- [ ] Java e JPA
-- [ ] Spring Boot 3: desenvolva uma API Rest em Java
-- [ ] Spring Boot 3: aplique boas práticas e proteja uma API Rest
-- [ ] Spring Boot 3: documente, teste e prepare uma API para o deploy
+- [x] SQL com MySQL
+- [x] Java e JDBC
+- [x] Persistência com JPA
+- [x] Java e JPA
+- [x] Spring Boot 3: desenvolva uma API Rest em Java
+- [x] Spring Boot 3: aplique boas práticas e proteja uma API Rest
+- [x] Spring Boot 3: documente, teste e prepare uma API para o deploy
