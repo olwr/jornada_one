@@ -40,7 +40,7 @@
 - [x] Organização de  Equipes Ágeis: os papéis existentes em uma equipe
 - [x] Diagnóstico de aprendizado
 
-## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Jave e Orientação a Objetos
+## <picture><source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.webp" type="image/webp"><img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f331/512.gif" alt="🌱" width="32" height="32"></picture> Formação Java e Orientação a Objetos
 ![progresso: concluído](https://img.shields.io/badge/progresso-concluído-mediumseagreen "progresso")
 
 - [x] Java JRE e JDK: compile e execute o seu programa
